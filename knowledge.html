@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge — Openhub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Open<strong>hub</strong></span>
+      </a>
+    </div>
+    <div class="navbar-center">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-input" placeholder="Search papers & research..." autocomplete="off">
+      </div>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-btn" id="theme-toggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+      <button class="btn btn-outline" id="login-btn">Log In</button>
+      <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+    </div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar sidebar-left" id="sidebar-left">
+      <nav class="sidebar-nav">
+        <h4 class="sidebar-heading">Navigation</h4>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Home</a>
+        <a href="news.html" class="sidebar-link"><i class="fas fa-newspaper"></i> News</a>
+        <a href="knowledge.html" class="sidebar-link active"><i class="fas fa-book-open"></i> Knowledge</a>
+      </nav>
+      <nav class="sidebar-nav">
+        <h4 class="sidebar-heading">Research Areas</h4>
+        <a href="#" class="sidebar-link filter-link active" data-filter="all"><i class="fas fa-layer-group"></i> All Papers</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="nlp"><i class="fas fa-language"></i> NLP</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="cv"><i class="fas fa-eye"></i> Computer Vision</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="rl"><i class="fas fa-gamepad"></i> Reinforcement Learning</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="architecture"><i class="fas fa-microchip"></i> Architectures</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="safety"><i class="fas fa-shield-halved"></i> AI Safety</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="agents"><i class="fas fa-robot"></i> Agents</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="multimodal"><i class="fas fa-images"></i> Multimodal</a>
+      </nav>
+      <nav class="sidebar-nav">
+        <h4 class="sidebar-heading">Venues</h4>
+        <a href="#" class="sidebar-link venue-link" data-venue="all"><i class="fas fa-university"></i> All Venues</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="NeurIPS"><i class="fas fa-brain"></i> NeurIPS</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="ICML"><i class="fas fa-cogs"></i> ICML</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="ICLR"><i class="fas fa-lightbulb"></i> ICLR</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="ACL"><i class="fas fa-comments"></i> ACL</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="CVPR"><i class="fas fa-camera"></i> CVPR</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="Nature"><i class="fas fa-leaf"></i> Nature</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="Science"><i class="fas fa-atom"></i> Science</a>
+        <a href="#" class="sidebar-link venue-link" data-venue="arXiv"><i class="fas fa-file-alt"></i> arXiv Preprints</a>
+      </nav>
+    </aside>
+
+    <!-- FEED -->
+    <section class="feed" id="feed">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-icon"><i class="fas fa-book-open"></i></div>
+        <div>
+          <h1>Knowledge Hub</h1>
+          <p>Curated papers from top AI journals and conferences, with community discussion</p>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="section-tabs">
+        <button class="section-tab active" data-section="all"><i class="fas fa-stream"></i> All</button>
+        <button class="section-tab" data-section="spotlight"><i class="fas fa-star"></i> Editor's Picks</button>
+        <button class="section-tab" data-section="recent"><i class="fas fa-clock"></i> Most Recent</button>
+        <button class="section-tab" data-section="discussed"><i class="fas fa-comments"></i> Most Discussed</button>
+      </div>
+
+      <!-- Papers Container -->
+      <div id="papers-container"></div>
+
+      <div class="load-more">
+        <button class="btn btn-outline" id="load-more-btn">Load More Papers</button>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar sidebar-right">
+      <div class="card">
+        <div class="card-banner" style="background: linear-gradient(135deg, #00b894, #0984e3);"></div>
+        <h3><i class="fas fa-book-open"></i> Knowledge Hub</h3>
+        <p>Explore the latest AI research from top venues. Read summaries, access papers, and discuss with the community.</p>
+        <button class="btn btn-primary btn-block" id="submit-paper-btn">Submit a Paper</button>
+      </div>
+      <div class="card">
+        <h4><i class="fas fa-fire"></i> Trending Papers</h4>
+        <ul class="trending-list" id="papers-trending"></ul>
+      </div>
+      <div class="card">
+        <h4><i class="fas fa-calendar"></i> Upcoming Deadlines</h4>
+        <ul class="deadline-list" id="deadline-list">
+          <li><strong>ICML 2026</strong><span>Apr 15, 2026</span></li>
+          <li><strong>ACL 2026</strong><span>May 1, 2026</span></li>
+          <li><strong>NeurIPS 2026</strong><span>May 22, 2026</span></li>
+          <li><strong>CVPR 2026</strong><span>Jun 10, 2026</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><i class="fas fa-tags"></i> Popular Topics</h4>
+        <div class="source-tags">
+          <span class="tag">Transformers</span>
+          <span class="tag">RLHF</span>
+          <span class="tag">Diffusion</span>
+          <span class="tag">MoE</span>
+          <span class="tag">Alignment</span>
+          <span class="tag">Scaling Laws</span>
+          <span class="tag">NeRF</span>
+          <span class="tag">State Space</span>
+          <span class="tag">RAG</span>
+          <span class="tag">Agents</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Contact</a>
+        <p>&copy; 2026 Openhub</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- DISCUSSION MODAL -->
+  <div class="modal-overlay" id="discussion-overlay">
+    <div class="modal" id="discussion-modal">
+      <div class="modal-header">
+        <h3 id="discussion-title">Discussion</h3>
+        <button class="icon-btn modal-close" id="discussion-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div id="discussion-item-summary"></div>
+        <hr style="border:none;border-top:1px solid var(--border-light);margin:12px 0;">
+        <div class="comment-form">
+          <textarea class="input textarea" id="discussion-comment-input" placeholder="Share your thoughts on this paper..."></textarea>
+          <button class="btn btn-primary" id="discussion-comment-submit">Post Comment</button>
+        </div>
+        <div id="discussion-comments"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT PAPER MODAL -->
+  <div class="modal-overlay" id="submit-paper-overlay">
+    <div class="modal" id="submit-paper-modal">
+      <div class="modal-header">
+        <h3>Submit a Paper</h3>
+        <button class="icon-btn modal-close" id="submit-paper-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="input" id="paper-title-input" placeholder="Paper title" maxlength="500">
+        <input type="text" class="input" id="paper-authors-input" placeholder="Authors (comma separated)">
+        <input type="url" class="input" id="paper-url-input" placeholder="Link to paper (arXiv, DOI, etc.)">
+        <select id="paper-venue-select" class="input">
+          <option value="">Select venue</option>
+          <option value="NeurIPS">NeurIPS</option>
+          <option value="ICML">ICML</option>
+          <option value="ICLR">ICLR</option>
+          <option value="ACL">ACL</option>
+          <option value="CVPR">CVPR</option>
+          <option value="Nature">Nature</option>
+          <option value="Science">Science</option>
+          <option value="arXiv">arXiv Preprint</option>
+        </select>
+        <textarea class="input textarea" id="paper-summary-input" placeholder="Write a TL;DR summary of the paper..."></textarea>
+        <input type="text" class="input" id="paper-tags-input" placeholder="Tags / research area (comma separated)">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="submit-paper-cancel">Cancel</button>
+        <button class="btn btn-primary" id="submit-paper-submit">Submit Paper</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="modal-overlay" id="auth-overlay">
+    <div class="modal modal-sm" id="auth-modal">
+      <div class="modal-header">
+        <h3 id="auth-title">Log In</h3>
+        <button class="icon-btn modal-close" id="auth-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="input" id="auth-username" placeholder="Username">
+        <input type="password" class="input" id="auth-password" placeholder="Password">
+        <input type="email" class="input hidden" id="auth-email" placeholder="Email">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-block" id="auth-submit">Log In</button>
+        <p class="auth-switch">Don't have an account? <a href="#" id="auth-toggle">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

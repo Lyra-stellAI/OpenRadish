@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News — Openhub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Open<strong>hub</strong></span>
+      </a>
+    </div>
+    <div class="navbar-center">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-input" placeholder="Search news & interviews..." autocomplete="off">
+      </div>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-btn" id="theme-toggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+      <button class="btn btn-outline" id="login-btn">Log In</button>
+      <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+    </div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar sidebar-left" id="sidebar-left">
+      <nav class="sidebar-nav">
+        <h4 class="sidebar-heading">Navigation</h4>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Home</a>
+        <a href="news.html" class="sidebar-link active"><i class="fas fa-newspaper"></i> News</a>
+        <a href="knowledge.html" class="sidebar-link"><i class="fas fa-book-open"></i> Knowledge</a>
+      </nav>
+      <nav class="sidebar-nav">
+        <h4 class="sidebar-heading">News Categories</h4>
+        <a href="#" class="sidebar-link filter-link active" data-filter="all"><i class="fas fa-globe"></i> All News</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="interview"><i class="fas fa-video"></i> Interviews</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="breaking"><i class="fas fa-bolt"></i> Breaking</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="product"><i class="fas fa-rocket"></i> Product Launches</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="policy"><i class="fas fa-landmark"></i> Policy & Regulation</a>
+        <a href="#" class="sidebar-link filter-link" data-filter="industry"><i class="fas fa-building"></i> Industry</a>
+      </nav>
+      <nav class="sidebar-nav">
+        <h4 class="sidebar-heading">Communities</h4>
+        <a href="community.html?c=llms" class="sidebar-link"><i class="fas fa-robot"></i> h/LLMs</a>
+        <a href="community.html?c=research" class="sidebar-link"><i class="fas fa-flask"></i> h/AIResearch</a>
+        <a href="community.html?c=ethics" class="sidebar-link"><i class="fas fa-scale-balanced"></i> h/AIethics</a>
+      </nav>
+    </aside>
+
+    <!-- FEED -->
+    <section class="feed" id="feed">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-icon"><i class="fas fa-newspaper"></i></div>
+        <div>
+          <h1>AI News & Interviews</h1>
+          <p>The latest news, interviews, and video content from the world of artificial intelligence</p>
+        </div>
+      </div>
+
+      <!-- Tabs: News / Interviews -->
+      <div class="section-tabs">
+        <button class="section-tab active" data-section="all"><i class="fas fa-stream"></i> All</button>
+        <button class="section-tab" data-section="news"><i class="fas fa-newspaper"></i> News Articles</button>
+        <button class="section-tab" data-section="videos"><i class="fas fa-play-circle"></i> Interview Videos</button>
+      </div>
+
+      <!-- Content Container -->
+      <div id="news-container"></div>
+
+      <div class="load-more">
+        <button class="btn btn-outline" id="load-more-btn">Load More</button>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar sidebar-right">
+      <div class="card">
+        <div class="card-banner" style="background: linear-gradient(135deg, #e84393, #6c5ce7);"></div>
+        <h3><i class="fas fa-newspaper"></i> AI News Hub</h3>
+        <p>Stay updated with the latest in AI. From breaking news to in-depth interviews with industry leaders.</p>
+        <button class="btn btn-primary btn-block" id="submit-news-btn">Submit News</button>
+      </div>
+      <div class="card">
+        <h4><i class="fas fa-fire"></i> Trending Stories</h4>
+        <ul class="trending-list" id="news-trending"></ul>
+      </div>
+      <div class="card">
+        <h4><i class="fas fa-star"></i> Featured Interviews</h4>
+        <div id="featured-interviews"></div>
+      </div>
+      <div class="card">
+        <h4><i class="fas fa-rss"></i> News Sources</h4>
+        <div class="source-tags">
+          <span class="tag">arXiv</span>
+          <span class="tag">TechCrunch</span>
+          <span class="tag">The Verge</span>
+          <span class="tag">MIT Tech Review</span>
+          <span class="tag">Wired</span>
+          <span class="tag">Nature</span>
+          <span class="tag">YouTube</span>
+          <span class="tag">Lex Fridman</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Contact</a>
+        <p>&copy; 2026 Openhub</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- DISCUSSION MODAL -->
+  <div class="modal-overlay" id="discussion-overlay">
+    <div class="modal" id="discussion-modal">
+      <div class="modal-header">
+        <h3 id="discussion-title">Discussion</h3>
+        <button class="icon-btn modal-close" id="discussion-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div id="discussion-item-summary"></div>
+        <hr style="border:none;border-top:1px solid var(--border-light);margin:12px 0;">
+        <div class="comment-form">
+          <textarea class="input textarea" id="discussion-comment-input" placeholder="Share your thoughts on this..."></textarea>
+          <button class="btn btn-primary" id="discussion-comment-submit">Post Comment</button>
+        </div>
+        <div id="discussion-comments"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT NEWS MODAL -->
+  <div class="modal-overlay" id="submit-news-overlay">
+    <div class="modal" id="submit-news-modal">
+      <div class="modal-header">
+        <h3>Submit News or Interview</h3>
+        <button class="icon-btn modal-close" id="submit-news-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <select id="news-type-select" class="input">
+          <option value="news">News Article</option>
+          <option value="interview">Interview Video</option>
+        </select>
+        <input type="text" class="input" id="news-title-input" placeholder="Title" maxlength="300">
+        <input type="url" class="input" id="news-url-input" placeholder="Link to article or video">
+        <input type="text" class="input" id="news-source-input" placeholder="Source (e.g., TechCrunch, YouTube)">
+        <textarea class="input textarea" id="news-summary-input" placeholder="Write a summary..."></textarea>
+        <input type="text" class="input" id="news-tags-input" placeholder="Tags (comma separated)">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="submit-news-cancel">Cancel</button>
+        <button class="btn btn-primary" id="submit-news-submit">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="modal-overlay" id="auth-overlay">
+    <div class="modal modal-sm" id="auth-modal">
+      <div class="modal-header">
+        <h3 id="auth-title">Log In</h3>
+        <button class="icon-btn modal-close" id="auth-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="input" id="auth-username" placeholder="Username">
+        <input type="password" class="input" id="auth-password" placeholder="Password">
+        <input type="email" class="input hidden" id="auth-email" placeholder="Email">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-block" id="auth-submit">Log In</button>
+        <p class="auth-switch">Don't have an account? <a href="#" id="auth-toggle">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

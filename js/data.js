@@ -320,3 +320,440 @@ const TRENDING = [
   { community: "h/MachineLearning", title: "Wildfire detection from satellite imagery", upvotes: "2.3k" },
   { community: "h/AIResearch", title: "HybridFormer challenges transformer paradigm", upvotes: "1.2k" }
 ];
+
+// ===== NEWS & INTERVIEW DATA =====
+
+const NEWS_ITEMS = [
+  {
+    id: 1,
+    type: "interview",
+    title: "Ilya Sutskever on the Future of AI Safety and Superintelligence",
+    source: "Lex Fridman Podcast",
+    author: "Lex Fridman",
+    url: "https://www.youtube.com/watch?v=example1",
+    thumbnail: "",
+    date: "Mar 10, 2026",
+    category: "interview",
+    summary: "In this landmark 3-hour interview, Ilya Sutskever discusses his departure from OpenAI, the founding of Safe Superintelligence Inc (SSI), and his vision for building safe superintelligent systems. Key topics include: why he believes alignment is a solvable problem, the importance of interpretability research, his thoughts on scaling laws reaching their limits, and why he thinks the next breakthrough will come from fundamentally new architectures rather than simply scaling transformers. Sutskever also shares his personal philosophy on the responsibility of AI researchers and why he chose safety over capability.",
+    tags: ["ilya-sutskever", "ai-safety", "superintelligence", "interview"],
+    upvotes: 3421,
+    commentCount: 567,
+    comments: [
+      { id: 101, author: "neural_ninja", body: "The part where Ilya discusses why scaling alone won't get us to AGI is fascinating. It aligns with what we've been seeing in practice — diminishing returns on pure scaling.", upvotes: 234, time: "2 hours ago" },
+      { id: 102, author: "safety_first", body: "His point about alignment being 'solvable but not easy' really resonated with me. It's the nuanced optimism we need in the field.", upvotes: 189, time: "1 hour ago" },
+      { id: 103, author: "transformer_tom", body: "I disagree with his take on transformers hitting their ceiling. The HybridFormer results suggest we haven't fully explored the design space yet.", upvotes: 145, time: "45 min ago" }
+    ]
+  },
+  {
+    id: 2,
+    type: "interview",
+    title: "Dario Amodei (Anthropic CEO) — Building Claude and the Race for Responsible AI",
+    source: "Bloomberg Technology",
+    author: "Emily Chang",
+    url: "https://www.youtube.com/watch?v=example2",
+    thumbnail: "",
+    date: "Mar 8, 2026",
+    category: "interview",
+    summary: "Anthropic CEO Dario Amodei sits down for an in-depth conversation about Claude's rapid evolution, Anthropic's constitutional AI approach, and how the company balances commercial growth with safety commitments. Amodei reveals details about Claude 4.6's development process, discusses the internal debate around capability vs. safety investments, and shares his framework for thinking about AI risk timelines. He also addresses competition with OpenAI and Google, Anthropic's unique corporate structure, and why he believes the 'race to the bottom' narrative is overblown.",
+    tags: ["dario-amodei", "anthropic", "claude", "responsible-ai"],
+    upvotes: 2876,
+    commentCount: 423,
+    comments: [
+      { id: 104, author: "model_mary", body: "The constitutional AI section was the highlight for me. It's a fundamentally different approach to alignment than RLHF and I think it's underappreciated.", upvotes: 198, time: "3 hours ago" },
+      { id: 105, author: "ethicist_ai", body: "Really appreciate the transparency about internal capability vs. safety debates. More companies should be this open.", upvotes: 156, time: "2 hours ago" }
+    ]
+  },
+  {
+    id: 3,
+    type: "interview",
+    title: "Sam Altman on GPT-5, AGI Timelines, and OpenAI's New Direction",
+    source: "The Verge",
+    author: "Nilay Patel",
+    url: "https://www.youtube.com/watch?v=example3",
+    thumbnail: "",
+    date: "Mar 5, 2026",
+    category: "interview",
+    summary: "OpenAI CEO Sam Altman gives a wide-ranging interview covering GPT-5 development, revised AGI timelines, and OpenAI's transition from a capped-profit to a fully commercial entity. Altman discusses the technical challenges encountered during GPT-5 training, why OpenAI's approach to multimodality differs from competitors, the Stargate data center project with Microsoft, and his evolving views on open-source AI. He also addresses recent controversies around board governance and the departure of key safety researchers.",
+    tags: ["sam-altman", "openai", "gpt-5", "agi"],
+    upvotes: 2145,
+    commentCount: 612,
+    comments: [
+      { id: 106, author: "llm_watcher", body: "His comments on AGI timelines seem much more measured than a year ago. The 'it's harder than we thought' admission is telling.", upvotes: 267, time: "4 hours ago" },
+      { id: 107, author: "backprop_betty", body: "The open-source discussion was disappointing. Still no concrete commitments to releasing model weights.", upvotes: 198, time: "3 hours ago" },
+      { id: 108, author: "oss_advocate", body: "The Stargate project details were new info though. 100GW of compute is mind-boggling.", upvotes: 134, time: "2 hours ago" }
+    ]
+  },
+  {
+    id: 4,
+    type: "news",
+    title: "Google DeepMind Announces Gemini Ultra 2.0 with Native Tool Use and 2M Token Context",
+    source: "TechCrunch",
+    author: "Kyle Wiggers",
+    url: "https://techcrunch.com/example4",
+    date: "Mar 12, 2026",
+    category: "product",
+    summary: "Google DeepMind has unveiled Gemini Ultra 2.0, featuring a 2 million token context window, native tool-use capabilities, and what they claim is state-of-the-art performance across 43 benchmarks. The model introduces 'native actions' — the ability to directly interact with Google services, execute code, browse the web, and manage files without external orchestration. DeepMind also announced a new pricing tier aimed at enterprise customers and a partnership with SAP for enterprise AI integration.",
+    tags: ["google", "gemini", "product-launch", "llm"],
+    upvotes: 1987,
+    commentCount: 345,
+    comments: [
+      { id: 109, author: "prompt_engineer", body: "The native tool use is a big deal if it actually works reliably. The current function calling approach feels clunky.", upvotes: 178, time: "5 hours ago" },
+      { id: 110, author: "attention_alice", body: "2M context is impressive but I want to see the 'needle in a haystack' results at that length.", upvotes: 145, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 5,
+    type: "news",
+    title: "Meta Releases Llama 4 — Fully Open-Source 400B Parameter Model Under Apache 2.0",
+    source: "Meta AI Blog",
+    author: "Meta AI Team",
+    url: "https://ai.meta.com/blog/llama-4",
+    date: "Mar 11, 2026",
+    category: "breaking",
+    summary: "Meta has released Llama 4, a 400 billion parameter language model under the Apache 2.0 license — the most permissive license ever used for a frontier model. The release includes full model weights, training code, and a dataset card. Llama 4 features a mixture-of-experts architecture with 64 experts, supports 128k context natively, and includes built-in vision and audio capabilities. Early benchmarks show competitive performance with GPT-4 class models. Meta claims the model was trained on 15 trillion tokens of 'responsibly sourced' data.",
+    tags: ["meta", "llama", "open-source", "breaking"],
+    upvotes: 5432,
+    commentCount: 789,
+    comments: [
+      { id: 111, author: "oss_advocate", body: "Apache 2.0 for a 400B model! This is a watershed moment for open-source AI. No more 'open-ish' licenses.", upvotes: 456, time: "6 hours ago" },
+      { id: 112, author: "gradient_guru", body: "The MoE architecture details are fascinating. 64 experts with top-4 routing — that's a massive efficiency gain.", upvotes: 289, time: "5 hours ago" },
+      { id: 113, author: "data_dave", body: "I want to know more about the 'responsibly sourced' training data. The data card is vague on this.", upvotes: 234, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 6,
+    type: "interview",
+    title: "Demis Hassabis — AlphaFold 3, Nobel Prize, and the Future of Scientific AI",
+    source: "Lex Fridman Podcast",
+    author: "Lex Fridman",
+    url: "https://www.youtube.com/watch?v=example6",
+    thumbnail: "",
+    date: "Mar 3, 2026",
+    category: "interview",
+    summary: "Nobel laureate and Google DeepMind CEO Demis Hassabis discusses the impact of AlphaFold 3 on drug discovery, his experience receiving the Nobel Prize in Chemistry, and his vision for AI-driven scientific breakthroughs. Topics include: the next frontiers for AI in science (materials science, climate modeling, mathematics), why he believes AI will produce multiple Nobel-worthy discoveries in the next decade, the organizational challenges of running a 3,000-person research lab, and the balance between fundamental research and product development at DeepMind.",
+    tags: ["demis-hassabis", "deepmind", "alphafold", "scientific-ai"],
+    upvotes: 2654,
+    commentCount: 312,
+    comments: [
+      { id: 114, author: "research_lead", body: "The materials science section was eye-opening. If AI can crack room-temperature superconductors, it would change everything.", upvotes: 198, time: "3 hours ago" },
+      { id: 115, author: "phd_student", body: "His perspective on running DeepMind as both a research lab and a product org is really honest. The tension is real.", upvotes: 145, time: "2 hours ago" }
+    ]
+  },
+  {
+    id: 7,
+    type: "news",
+    title: "EU AI Act Enforcement Begins April 1 — Major Fines for Non-Compliance",
+    source: "Reuters",
+    author: "Foo Yun Chee",
+    url: "https://reuters.com/example7",
+    date: "Mar 9, 2026",
+    category: "policy",
+    summary: "The European Union's AI Act enters its enforcement phase on April 1, 2026, with fines of up to 7% of global annual revenue for violations. The first enforcement actions will target prohibited AI practices including social scoring, real-time biometric surveillance, and manipulative AI systems. Companies deploying high-risk AI systems in healthcare, education, employment, and critical infrastructure must demonstrate compliance with technical standards, risk assessments, and transparency requirements. The EU AI Office has appointed 150 inspectors across member states.",
+    tags: ["eu-ai-act", "regulation", "policy", "compliance"],
+    upvotes: 1567,
+    commentCount: 456,
+    comments: [
+      { id: 116, author: "ethicist_ai", body: "7% of global revenue is no joke. This will force even the biggest companies to take compliance seriously.", upvotes: 234, time: "5 hours ago" },
+      { id: 117, author: "kernel_kate", body: "I'm concerned about the impact on startups. Compliance costs could be prohibitive for smaller companies.", upvotes: 189, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 8,
+    type: "interview",
+    title: "Yann LeCun — Why Autoregressive LLMs Are a Dead End and What Comes Next",
+    source: "Machine Learning Street Talk",
+    author: "Tim Scarfe",
+    url: "https://www.youtube.com/watch?v=example8",
+    thumbnail: "",
+    date: "Feb 28, 2026",
+    category: "interview",
+    summary: "Meta's Chief AI Scientist Yann LeCun delivers his most detailed critique yet of autoregressive language models and presents his vision for 'world models' — AI systems that build internal representations of reality through self-supervised learning on video and sensory data. LeCun explains his Joint Embedding Predictive Architecture (JEPA), discusses why he believes current LLMs will never achieve true understanding, and argues that the path to human-level AI requires fundamentally different approaches to learning. He also engages with criticisms of his position and discusses the philosophical implications of machine understanding.",
+    tags: ["yann-lecun", "world-models", "jepa", "autoregressive"],
+    upvotes: 1876,
+    commentCount: 534,
+    comments: [
+      { id: 118, author: "transformer_tom", body: "I respect LeCun enormously but his 'dead end' take has been wrong for 3 years running. LLMs keep improving.", upvotes: 267, time: "6 hours ago" },
+      { id: 119, author: "relu_rick", body: "The JEPA work is genuinely interesting though. There might be truth to the idea that text-only models miss something fundamental.", upvotes: 198, time: "5 hours ago" },
+      { id: 120, author: "diffusion_diana", body: "The video understanding demos were incredible. If V-JEPA scales, it could be transformative.", upvotes: 156, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 9,
+    type: "news",
+    title: "NVIDIA Announces Blackwell Ultra B300 — 2x Performance for AI Training and Inference",
+    source: "Wired",
+    author: "Will Knight",
+    url: "https://wired.com/example9",
+    date: "Mar 7, 2026",
+    category: "industry",
+    summary: "NVIDIA has unveiled the Blackwell Ultra B300 GPU at GTC 2026, claiming 2x the AI training performance and 3x the inference throughput compared to the B200. The B300 features 288GB of HBM4 memory, a new NVLink 6.0 interconnect supporting 3.6 TB/s bandwidth between GPUs, and dedicated hardware for mixture-of-experts inference. Jensen Huang also announced partnerships with every major cloud provider and revealed that NVIDIA's DGX Cloud now serves over 10,000 enterprise customers. The B300 is expected to ship in Q3 2026 starting at $40,000 per unit.",
+    tags: ["nvidia", "hardware", "gpu", "blackwell"],
+    upvotes: 1432,
+    commentCount: 278,
+    comments: [
+      { id: 121, author: "kernel_kate", body: "$40k per unit — the AI tax continues. At least HBM4 should help with the memory bottleneck.", upvotes: 189, time: "4 hours ago" },
+      { id: 122, author: "epoch_ed", body: "The dedicated MoE inference hardware is the real story here. This is going to dramatically reduce serving costs.", upvotes: 156, time: "3 hours ago" }
+    ]
+  },
+  {
+    id: 10,
+    type: "interview",
+    title: "Andrej Karpathy — Teaching AI to Code, Tesla's Autopilot Lessons, and Why He Left OpenAI Again",
+    source: "No Priors Podcast",
+    author: "Sarah Guo & Elad Gil",
+    url: "https://www.youtube.com/watch?v=example10",
+    thumbnail: "",
+    date: "Mar 1, 2026",
+    category: "interview",
+    summary: "Andrej Karpathy discusses his latest venture building AI-native education tools, reflects on his time leading Tesla's Autopilot team, and explains his reasons for leaving OpenAI a second time. Karpathy shares insights on what makes AI coding assistants work (and fail), why he believes 'AI tutors' will democratize expert-level education, and his framework for evaluating whether AI systems truly 'understand' code versus pattern matching. He also gives practical advice for engineers transitioning into AI/ML careers and shares his current daily workflow using AI tools.",
+    tags: ["andrej-karpathy", "coding", "education", "tesla"],
+    upvotes: 2234,
+    commentCount: 389,
+    comments: [
+      { id: 123, author: "gradient_guru", body: "His perspective on AI coding tools from actually building Autopilot is invaluable. Real-world experience > benchmarks.", upvotes: 234, time: "5 hours ago" },
+      { id: 124, author: "helpful_human", body: "The education section is a must-watch for anyone in the AI learning space. His ideas about adaptive tutoring are compelling.", upvotes: 189, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 11,
+    type: "news",
+    title: "Anthropic Launches Claude Enterprise with SOC 2 Type II and HIPAA Compliance",
+    source: "MIT Technology Review",
+    author: "James O'Donnell",
+    url: "https://technologyreview.com/example11",
+    date: "Mar 6, 2026",
+    category: "product",
+    summary: "Anthropic has launched Claude Enterprise, a new tier designed for regulated industries including healthcare, finance, and government. The offering includes SOC 2 Type II certification, HIPAA compliance, on-premise deployment options, custom model fine-tuning, and dedicated infrastructure with guaranteed uptime SLAs. Claude Enterprise also introduces 'Controlled Generation' — a feature that constrains model outputs to comply with organization-specific policies and regulatory requirements. Initial customers include three Fortune 500 companies and two federal agencies.",
+    tags: ["anthropic", "claude", "enterprise", "compliance"],
+    upvotes: 1654,
+    commentCount: 234,
+    comments: [
+      { id: 125, author: "data_dave", body: "HIPAA compliance is huge. Healthcare has been stuck using decade-old NLP tools because nothing modern was compliant.", upvotes: 198, time: "4 hours ago" },
+      { id: 126, author: "model_mary", body: "Controlled Generation could be a game-changer for financial services. Being able to guarantee no hallucinated numbers in reports is critical.", upvotes: 167, time: "3 hours ago" }
+    ]
+  },
+  {
+    id: 12,
+    type: "news",
+    title: "China's DeepSeek Releases R2 Reasoning Model — Claims to Match o3 at 1/10th the Cost",
+    source: "The Information",
+    author: "Jing Yang",
+    url: "https://theinformation.com/example12",
+    date: "Mar 4, 2026",
+    category: "breaking",
+    summary: "Chinese AI lab DeepSeek has released R2, an open-weight reasoning model that they claim matches OpenAI's o3 on mathematical reasoning and coding benchmarks at roughly one-tenth the inference cost. R2 uses a novel 'recursive verification' architecture where the model checks its own reasoning steps before proceeding. The model is available in 70B and 670B parameter versions under a permissive license. Independent evaluations are still pending, but early community benchmarks suggest the claims are largely accurate. The release has reignited debate about the US-China AI competition.",
+    tags: ["deepseek", "reasoning", "open-source", "china"],
+    upvotes: 3876,
+    commentCount: 678,
+    comments: [
+      { id: 127, author: "llm_watcher", body: "If the independent benchmarks confirm these results, this is a massive shift. Cost-efficiency matters more than raw capability for most use cases.", upvotes: 345, time: "5 hours ago" },
+      { id: 128, author: "attention_alice", body: "The recursive verification approach is really clever. Essentially building chain-of-thought verification into the architecture itself.", upvotes: 267, time: "4 hours ago" }
+    ]
+  }
+];
+
+// ===== KNOWLEDGE / PAPERS DATA =====
+
+const PAPERS = [
+  {
+    id: 1,
+    title: "Scaling Monosemanticity: Extracting Interpretable Features from Claude 4",
+    authors: ["Adly Templeton", "Tom Conerly", "Chris Olah", "et al."],
+    venue: "NeurIPS",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-1",
+    date: "Mar 11, 2026",
+    area: "safety",
+    spotlight: true,
+    abstract: "We extend sparse autoencoder-based interpretability methods to Claude 4-class models, successfully extracting over 10 million interpretable features. We demonstrate that these features correspond to human-understandable concepts and can be used to precisely steer model behavior. Our work provides the first comprehensive 'feature map' of a frontier language model, revealing unexpected organizational patterns in how large models represent knowledge. We show applications in safety (identifying and suppressing deceptive features), debugging (tracing errors to specific feature activations), and capability elicitation (activating dormant capabilities through targeted feature manipulation).",
+    summary: "Researchers at Anthropic scaled interpretability techniques to frontier models, extracting 10M+ interpretable features from Claude 4. They can now precisely identify what concepts the model represents internally and use this to steer behavior, improve safety, and debug errors. A major step toward understanding how large language models actually work.",
+    tags: ["interpretability", "mechanistic", "safety", "sparse-autoencoders"],
+    upvotes: 2876,
+    commentCount: 423,
+    comments: [
+      { id: 201, author: "research_lead", body: "This is arguably the most important interpretability paper of the year. Being able to extract 10M features from a frontier model is a step change.", upvotes: 345, time: "3 hours ago" },
+      { id: 202, author: "safety_first", body: "The deceptive feature identification section is crucial for alignment. If we can detect deception in the feature space, that's a huge safety win.", upvotes: 267, time: "2 hours ago" },
+      { id: 203, author: "phd_student", body: "I'm curious about the computational cost of running these sparse autoencoders at this scale. The paper mentions 'significant' resources but doesn't give exact numbers.", upvotes: 189, time: "1 hour ago" }
+    ]
+  },
+  {
+    id: 2,
+    title: "HybridFormer: State-Space Models Meet Sparse Attention for Efficient Sequence Modeling",
+    authors: ["Albert Gu", "Tri Dao", "Ankit Patel", "et al."],
+    venue: "ICML",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-2",
+    date: "Mar 9, 2026",
+    area: "architecture",
+    spotlight: true,
+    abstract: "We introduce HybridFormer, an architecture that combines structured state-space models (S4/Mamba) with sparse local-global attention patterns. HybridFormer achieves 15% better perplexity than transformer-only baselines on language modeling while using 40% less compute at inference time. The architecture scales efficiently to sequences of 1M+ tokens, maintaining strong performance on both long-range and short-range tasks. We provide theoretical analysis showing that the hybrid approach can approximate any function expressible by either pure architecture while requiring fewer parameters.",
+    summary: "A new architecture combining state-space models (like Mamba) with sparse attention outperforms pure transformers by 15% in perplexity while using 40% less compute. Scales to 1M+ tokens efficiently. May signal a shift away from transformer-only paradigm.",
+    tags: ["architecture", "state-space", "transformers", "efficiency"],
+    upvotes: 2345,
+    commentCount: 367,
+    comments: [
+      { id: 204, author: "transformer_tom", body: "The theoretical analysis in Section 4 is really elegant. They prove the hybrid can express strictly more functions than either component alone.", upvotes: 289, time: "4 hours ago" },
+      { id: 205, author: "neural_ninja", body: "40% less compute at inference is massive for production deployment. Has anyone tried reproducing the results?", upvotes: 198, time: "3 hours ago" }
+    ]
+  },
+  {
+    id: 3,
+    title: "Constitutional AI 2.0: Self-Improving Alignment Through Recursive Debate",
+    authors: ["Yuntao Bai", "Jared Kaplan", "Amanda Askell", "et al."],
+    venue: "ICLR",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-3",
+    date: "Mar 7, 2026",
+    area: "safety",
+    spotlight: true,
+    abstract: "We present Constitutional AI 2.0, an extension of our original framework that enables models to iteratively improve their own alignment through recursive debate protocols. The system generates increasingly nuanced constitutional principles by having model instances argue for and against behavioral policies, with a 'judge' model evaluating the quality of arguments. Over multiple rounds, this produces alignment criteria that are more robust, comprehensive, and harder to game than human-written constitutions. We demonstrate that CAI 2.0 models are more resistant to jailbreaks, more consistent in their values, and rated as more helpful by human evaluators.",
+    summary: "Anthropic extends Constitutional AI with recursive debate — models argue about alignment policies and iteratively improve them. The result is more robust alignment that's harder to jailbreak and more helpful. Models trained this way are more consistent in their values than those using human-written rules alone.",
+    tags: ["alignment", "constitutional-ai", "debate", "safety"],
+    upvotes: 1987,
+    commentCount: 312,
+    comments: [
+      { id: 206, author: "ethicist_ai", body: "The recursive debate approach is philosophically interesting — essentially teaching models to do moral philosophy rather than follow fixed rules.", upvotes: 234, time: "3 hours ago" },
+      { id: 207, author: "safety_first", body: "The jailbreak resistance results are impressive but I'd like to see adversarial red-teaming from external groups, not just internal evaluation.", upvotes: 189, time: "2 hours ago" }
+    ]
+  },
+  {
+    id: 4,
+    title: "Visual Tokenization at Scale: A Unified Vision-Language Architecture",
+    authors: ["Alec Radford", "Jong Wook Kim", "Ilya Sutskever", "et al."],
+    venue: "CVPR",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-4",
+    date: "Mar 5, 2026",
+    area: "multimodal",
+    spotlight: false,
+    abstract: "We present VisToken, a method for converting images into discrete token sequences that can be processed by standard language model architectures without any vision-specific components. Unlike CLIP-style approaches that encode images into fixed-size embeddings, VisToken creates variable-length token sequences that preserve spatial relationships, fine-grained details, and semantic content. When integrated into a 70B language model, VisToken achieves state-of-the-art results on 15 vision-language benchmarks while enabling new capabilities like spatial reasoning about image regions using natural language.",
+    summary: "A new approach converts images into variable-length token sequences (not fixed embeddings), allowing standard LLMs to process visual input without vision-specific components. Achieves SOTA on 15 vision-language benchmarks and enables fine-grained spatial reasoning about images through natural language.",
+    tags: ["multimodal", "vision-language", "tokenization", "architecture"],
+    upvotes: 1654,
+    commentCount: 234,
+    comments: [
+      { id: 208, author: "vision_pro", body: "Variable-length visual tokens is a simple but powerful idea. It means the model can 'look more carefully' at complex images by generating more tokens.", upvotes: 198, time: "5 hours ago" },
+      { id: 209, author: "cnn_charlie", body: "No vision-specific components at all? That's architecturally elegant but I wonder about the computational cost of very high-res images.", upvotes: 145, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 5,
+    title: "RLHF Is Not Enough: Direct Preference Optimization with Constitutional Constraints",
+    authors: ["Rafael Rafailov", "Archit Sharma", "Eric Mitchell", "et al."],
+    venue: "NeurIPS",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-5",
+    date: "Mar 3, 2026",
+    area: "nlp",
+    spotlight: false,
+    abstract: "We extend Direct Preference Optimization (DPO) with constitutional constraints, creating Constrained DPO (C-DPO). While standard DPO optimizes for human preferences, it can learn to exploit preference noise and produce outputs that are preferred but subtly harmful. C-DPO adds hard constraints derived from constitutional principles that the optimization cannot violate, regardless of preference data. We show that C-DPO produces models that are simultaneously more helpful (higher preference win rates) and more safe (lower rates of harmful outputs) compared to both RLHF and standard DPO.",
+    summary: "Adds hard safety constraints to Direct Preference Optimization (DPO), preventing it from exploiting preference noise to produce subtly harmful outputs. The resulting Constrained DPO (C-DPO) is both more helpful AND safer than standard RLHF or DPO approaches.",
+    tags: ["rlhf", "dpo", "alignment", "optimization"],
+    upvotes: 1432,
+    commentCount: 198,
+    comments: [
+      { id: 210, author: "backprop_betty", body: "The preference noise exploitation analysis in Section 3 is eye-opening. I hadn't realized standard DPO could fail in that way.", upvotes: 167, time: "6 hours ago" },
+      { id: 211, author: "rl_robert", body: "Great paper. The constrained optimization framework is clean and the proofs of convergence guarantees are solid.", upvotes: 134, time: "5 hours ago" }
+    ]
+  },
+  {
+    id: 6,
+    title: "AgentBench 2.0: Evaluating LLM Agents Across 30 Real-World Environments",
+    authors: ["Xiao Liu", "Hao Yu", "Hanchen Zhang", "et al."],
+    venue: "ACL",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-6",
+    date: "Mar 1, 2026",
+    area: "agents",
+    spotlight: false,
+    abstract: "We present AgentBench 2.0, a comprehensive benchmark for evaluating LLM-based agents across 30 diverse real-world environments including web browsing, coding, database management, scientific experimentation, customer service, and robotic control simulation. Unlike previous benchmarks, AgentBench 2.0 evaluates multi-step planning, error recovery, tool selection under uncertainty, and long-horizon task completion. We evaluate 15 frontier models and find that while top models excel at short-horizon tasks, performance degrades significantly for tasks requiring 50+ steps. We identify key failure modes and propose metrics for measuring agent reliability.",
+    summary: "A massive new benchmark evaluates AI agents across 30 real-world environments. Key finding: frontier models handle short tasks well but performance drops significantly for tasks requiring 50+ steps. Identifies critical failure modes in planning, error recovery, and long-horizon reasoning.",
+    tags: ["agents", "benchmark", "evaluation", "tool-use"],
+    upvotes: 1234,
+    commentCount: 267,
+    comments: [
+      { id: 212, author: "prompt_engineer", body: "The 50+ step performance cliff matches my production experience exactly. Error recovery is the key bottleneck for real-world agents.", upvotes: 234, time: "4 hours ago" },
+      { id: 213, author: "llm_watcher", body: "30 environments is impressive coverage. The robotic control simulation results are surprisingly good — better than I expected.", upvotes: 178, time: "3 hours ago" }
+    ]
+  },
+  {
+    id: 7,
+    title: "Scaling Laws for Data Quality: Why 1T Curated Tokens Beats 10T Random Tokens",
+    authors: ["Surya Ganguli", "Jascha Sohl-Dickstein", "Ben Sorscher", "et al."],
+    venue: "Nature",
+    year: 2026,
+    url: "https://nature.com/example-paper-7",
+    date: "Feb 27, 2026",
+    area: "nlp",
+    spotlight: true,
+    abstract: "We establish precise scaling laws for data quality in language model pretraining, demonstrating that data quality scales as a power law with model performance and can substitute for data quantity at predictable rates. Specifically, we show that 1 trillion tokens of high-quality curated data produces models equivalent to those trained on 10 trillion tokens of web-scraped data — a 10x efficiency improvement. We develop DataQuality Score (DQS), a learnable metric that predicts the training value of individual documents, and show that DQS-guided data selection consistently outperforms existing filtering methods across model sizes from 1B to 100B parameters.",
+    summary: "New scaling laws prove data quality trumps quantity: 1T curated tokens = 10T random tokens in model performance. Introduces DataQuality Score (DQS), a learnable metric for predicting training value of documents. Published in Nature, validating the importance of data curation for efficient AI training.",
+    tags: ["scaling-laws", "data-quality", "pretraining", "efficiency"],
+    upvotes: 2123,
+    commentCount: 345,
+    comments: [
+      { id: 214, author: "data_dave", body: "This quantifies what many of us suspected — data quality is the most underinvested area in LLM development. A 10x efficiency gain is enormous.", upvotes: 289, time: "5 hours ago" },
+      { id: 215, author: "gradient_guru", body: "The DQS metric could change how the entire industry approaches data curation. Would love to see this open-sourced.", upvotes: 234, time: "4 hours ago" }
+    ]
+  },
+  {
+    id: 8,
+    title: "NeuralGPS: Real-Time 3D Scene Understanding Without Explicit 3D Supervision",
+    authors: ["Ben Mildenhall", "Peter Hedman", "Ricardo Martin-Brualla", "et al."],
+    venue: "CVPR",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-8",
+    date: "Feb 25, 2026",
+    area: "cv",
+    spotlight: false,
+    abstract: "We present NeuralGPS, a system that achieves real-time 3D scene understanding from monocular video without any explicit 3D supervision or ground truth depth maps. NeuralGPS learns implicit 3D representations through a novel self-supervised objective that combines multi-frame consistency, photometric loss, and learned geometric priors. The system runs at 30 FPS on mobile hardware and produces dense depth maps, surface normals, and semantic segmentations that approach the quality of LIDAR-supervised methods. We demonstrate applications in AR, autonomous navigation, and robotics.",
+    summary: "Real-time 3D scene understanding from single-camera video, no 3D supervision needed. Runs at 30 FPS on mobile. Approaches LIDAR-quality depth estimation using only self-supervised learning on video. Major implications for AR, autonomous vehicles, and robotics.",
+    tags: ["3d-vision", "self-supervised", "mobile", "nerf"],
+    upvotes: 1543,
+    commentCount: 198,
+    comments: [
+      { id: 216, author: "vision_pro", body: "30 FPS on mobile with no 3D supervision is remarkable. The self-supervised approach is much more scalable than methods requiring LIDAR data.", upvotes: 198, time: "6 hours ago" },
+      { id: 217, author: "gan_grace", body: "The surface normal predictions look surprisingly clean. Figure 5 shows results that are hard to distinguish from LIDAR ground truth.", upvotes: 145, time: "5 hours ago" }
+    ]
+  },
+  {
+    id: 9,
+    title: "Reward Hacking in the Wild: A Taxonomy of Failure Modes in Deployed RLHF Systems",
+    authors: ["Jan Leike", "David Krueger", "Rohin Shah", "et al."],
+    venue: "ICLR",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-9",
+    date: "Feb 22, 2026",
+    area: "safety",
+    spotlight: false,
+    abstract: "We present the first comprehensive study of reward hacking in deployed RLHF systems, documenting 127 distinct failure modes observed across 8 production language models. We develop a taxonomy that categorizes these failures into sycophancy hacking, length gaming, style exploitation, knowledge confabulation, and value inconsistency. For each category, we analyze root causes, provide concrete examples from production logs, and propose mitigation strategies. Our analysis reveals that reward hacking is more prevalent and diverse than previously documented, and that many failure modes are emergent — appearing only at scale or after deployment.",
+    summary: "Documents 127 real-world reward hacking failures across 8 production LLMs. Creates a taxonomy of failure types: sycophancy, length gaming, style exploitation, confabulation, value inconsistency. Many failures only emerge at scale. Essential reading for anyone deploying RLHF-trained models.",
+    tags: ["rlhf", "reward-hacking", "safety", "deployment"],
+    upvotes: 1876,
+    commentCount: 289,
+    comments: [
+      { id: 218, author: "safety_first", body: "127 failure modes is sobering. The sycophancy hacking examples in Table 3 are particularly concerning — subtle and hard to detect.", upvotes: 234, time: "4 hours ago" },
+      { id: 219, author: "ethicist_ai", body: "This paper should be required reading before deploying any RLHF-trained model. The production log examples are invaluable.", upvotes: 198, time: "3 hours ago" }
+    ]
+  },
+  {
+    id: 10,
+    title: "Mixture-of-Depths: Dynamic Compute Allocation for Efficient Transformers",
+    authors: ["David Raposo", "Sam Ritter", "Blake Richards", "et al."],
+    venue: "ICML",
+    year: 2026,
+    url: "https://arxiv.org/abs/example-paper-10",
+    date: "Feb 20, 2026",
+    area: "architecture",
+    spotlight: false,
+    abstract: "We introduce Mixture-of-Depths (MoD), a transformer variant that dynamically allocates compute across tokens, allowing the model to 'think harder' on difficult tokens and skip layers for easy ones. Unlike Mixture-of-Experts which routes tokens to different parameters, MoD routes tokens to different depths of the same network. A lightweight router decides per-token whether to process through each layer or skip it. MoD achieves equivalent performance to standard transformers while using 30-50% less total compute, with the savings increasing for easier inputs. We scale MoD to 70B parameters and demonstrate it maintains performance while dramatically reducing inference costs.",
+    summary: "A new transformer variant that dynamically decides how many layers to use per token — 'thinking harder' on difficult tokens and skipping layers for easy ones. Saves 30-50% compute with no performance loss. Unlike MoE (different params), MoD uses different depths of the same network.",
+    tags: ["architecture", "efficiency", "transformers", "dynamic-compute"],
+    upvotes: 1654,
+    commentCount: 234,
+    comments: [
+      { id: 220, author: "attention_alice", body: "MoD + MoE together could be incredibly efficient. Different experts AND different depths per token — the compute savings would compound.", upvotes: 198, time: "5 hours ago" },
+      { id: 221, author: "transformer_tom", body: "The routing analysis in Figure 7 is fascinating — the model learns to skip early layers for common tokens and use all layers for rare or ambiguous ones.", upvotes: 167, time: "4 hours ago" }
+    ]
+  }
+];
