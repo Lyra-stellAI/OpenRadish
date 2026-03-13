@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post — Openhub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-left">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Open<strong>hub</strong></span>
+      </a>
+    </div>
+    <div class="navbar-center">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-input" placeholder="Search Openhub" autocomplete="off">
+      </div>
+    </div>
+    <div class="navbar-right">
+      <button class="icon-btn" id="theme-toggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+      <button class="btn btn-outline" id="login-btn">Log In</button>
+      <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+    </div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+  </header>
+
+  <main class="container container-post">
+    <section class="feed" id="feed">
+      <div class="post-detail" id="post-detail">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- Comments Section -->
+      <div class="comments-section" id="comments-section">
+        <h3 id="comment-count">Comments</h3>
+        <div class="comment-form">
+          <textarea class="input textarea" id="comment-input" placeholder="Share your thoughts..."></textarea>
+          <button class="btn btn-primary" id="comment-submit">Comment</button>
+        </div>
+        <div class="comment-sort">
+          <span>Sort by:</span>
+          <select id="comment-sort-select" class="input input-sm">
+            <option value="best">Best</option>
+            <option value="new">New</option>
+            <option value="top">Top</option>
+          </select>
+        </div>
+        <div id="comments-container"></div>
+      </div>
+    </section>
+
+    <aside class="sidebar sidebar-right">
+      <div class="card">
+        <h4 id="post-community-name">h/MachineLearning</h4>
+        <p id="post-community-desc">A place to discuss machine learning.</p>
+        <button class="btn btn-primary btn-block">Join Community</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
