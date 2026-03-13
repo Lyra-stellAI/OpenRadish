@@ -1,35 +1,53 @@
-# Openhub
+# OpenReddit
 
-**The AI Community** — A Reddit-style platform for AI enthusiasts, researchers, and practitioners.
+**The AI Community** — [openreddit.com](https://openreddit.com)
+
+A Reddit-style platform for AI enthusiasts, researchers, and practitioners.
 
 ## Features
 
 - **Community-based discussions** — Browse communities (h/MachineLearning, h/LLMs, h/AIResearch, etc.)
-- **Upvote/Downvote system** — Vote on posts and comments
+- **News section** — Latest AI news, interviews with industry leaders (Ilya Sutskever, Dario Amodei, Sam Altman, etc.)
+- **Knowledge hub** — Curated papers from NeurIPS, ICML, ICLR, CVPR, Nature, and more
+- **Upvote/Downvote system** — Vote on posts, news, papers, and comments
+- **Community discussion** — Threaded comments on every post, news item, and paper
 - **Create posts** — Text, link, and image post types with tags
-- **Threaded comments** — Nested comment threads on post pages
-- **Search** — Filter posts by title, body, community, or tags
+- **Search** — Filter by title, body, community, tags, authors, venues
 - **Dark mode** — Toggle between light and dark themes
 - **Responsive design** — Works on desktop, tablet, and mobile
 - **User auth** — Login/signup flow (client-side demo)
 
+## Pages
+
+| Page | Description |
+|------|-------------|
+| `index.html` | Home — post feed, sidebar, trending |
+| `news.html` | AI News & interview videos with summaries |
+| `knowledge.html` | Curated research papers with TL;DR and abstracts |
+| `community.html` | Community pages — filtered posts, rules, mods |
+| `post.html` | Post detail — full content, threaded comments |
+
 ## Project Structure
 
 ```
-Openhub/
-├── index.html          # Home page — feed, sidebar, trending
-├── community.html      # Community page — filtered posts, about, rules
-├── post.html           # Post detail page — full post, comments
+OpenReddit/
+├── index.html
+├── news.html
+├── knowledge.html
+├── community.html
+├── post.html
 ├── css/
-│   └── style.css       # All styles, theming, responsive breakpoints
+│   └── style.css
 └── js/
-    ├── data.js         # Sample data (communities, posts, comments)
-    └── app.js          # Application logic (rendering, voting, modals)
+    ├── data.js
+    └── app.js
 ```
 
 ## Getting Started
 
 Open `index.html` in a browser — no build step or server required.
+
+For deployment to openreddit.com, upload all files to your web host's root directory.
 
 ## Communities
 

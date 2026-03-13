@@ -14,7 +14,7 @@
 
   // ===== THEME =====
   function initTheme() {
-    const saved = localStorage.getItem("openhub-theme");
+    const saved = localStorage.getItem("openreddit-theme");
     if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
     const btn = $("#theme-toggle");
     if (btn) {
@@ -22,15 +22,15 @@
         const isDark = document.documentElement.getAttribute("data-theme") === "dark";
         if (isDark) {
           document.documentElement.removeAttribute("data-theme");
-          localStorage.setItem("openhub-theme", "light");
+          localStorage.setItem("openreddit-theme", "light");
           btn.innerHTML = '<i class="fas fa-moon"></i>';
         } else {
           document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("openhub-theme", "dark");
+          localStorage.setItem("openreddit-theme", "dark");
           btn.innerHTML = '<i class="fas fa-sun"></i>';
         }
       });
-      if (localStorage.getItem("openhub-theme") === "dark") {
+      if (localStorage.getItem("openreddit-theme") === "dark") {
         btn.innerHTML = '<i class="fas fa-sun"></i>';
       }
     }
@@ -345,7 +345,7 @@
       return;
     }
 
-    document.title = `${post.title} — Openhub`;
+    document.title = `${post.title} — OpenReddit`;
 
     const tags = (post.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
     container.innerHTML = `
@@ -487,7 +487,7 @@
 
     if (!community) return;
 
-    document.title = `${community.name} — Openhub`;
+    document.title = `${community.name} — OpenReddit`;
 
     const iconEl = $("#community-icon");
     const nameEl = $("#community-name");
