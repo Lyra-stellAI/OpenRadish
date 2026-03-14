@@ -9,52 +9,13 @@
 </head>
 <body>
 
-  <!-- NAVBAR (same as index) -->
-  <header class="navbar">
-    <div class="navbar-left">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">⬡</span>
-        <span class="logo-text">Open<strong>hub</strong></span>
-      </a>
-    </div>
-    <div class="navbar-center">
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" id="search-input" placeholder="Search Openhub" autocomplete="off">
-      </div>
-    </div>
-    <div class="navbar-right">
-      <button class="icon-btn" id="theme-toggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-      <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i></button>
-      <button class="btn btn-outline" id="login-btn">Log In</button>
-      <button class="btn btn-primary" id="signup-btn">Sign Up</button>
-    </div>
-    <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-  </header>
+  <div id="navbar-root"></div>
 
   <main class="container">
-    <aside class="sidebar sidebar-left" id="sidebar-left">
-      <nav class="sidebar-nav">
-        <h4 class="sidebar-heading">Navigation</h4>
-        <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Home</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-fire"></i> Hot</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-bolt"></i> New</a>
-      </nav>
-    </aside>
+    <div id="sidebar-left-root"></div>
 
     <section class="feed" id="feed">
-      <!-- Community Banner -->
-      <div class="community-banner" id="community-banner">
-        <div class="community-banner-bg"></div>
-        <div class="community-banner-info">
-          <div class="community-icon" id="community-icon"><i class="fas fa-brain"></i></div>
-          <div>
-            <h1 id="community-name">h/MachineLearning</h1>
-            <p id="community-tagline">Discuss the latest in machine learning</p>
-          </div>
-          <button class="btn btn-primary" id="join-btn">Join</button>
-        </div>
-      </div>
+      <div id="community-banner-root"></div>
 
       <div class="sort-bar">
         <button class="sort-btn active" data-sort="hot"><i class="fas fa-fire"></i> Hot</button>
@@ -65,41 +26,23 @@
       <div id="posts-container"></div>
     </section>
 
-    <aside class="sidebar sidebar-right">
-      <div class="card">
-        <h4>About this Community</h4>
-        <p id="community-description">A place to discuss machine learning research, tools, and applications.</p>
-        <div class="community-stats">
-          <div class="stat"><strong id="stat-members">24.5k</strong><span>Members</span></div>
-          <div class="stat"><strong id="stat-online">1.2k</strong><span>Online</span></div>
-        </div>
-        <p class="community-created">Created <span id="community-created">Jan 15, 2026</span></p>
-      </div>
-      <div class="card">
-        <h4>Community Rules</h4>
-        <ol class="rules-list" id="community-rules">
-          <li>Stay on topic</li>
-          <li>Be respectful</li>
-          <li>Cite your sources</li>
-          <li>No low-effort posts</li>
-        </ol>
-      </div>
-      <div class="card">
-        <h4>Moderators</h4>
-        <ul class="mod-list" id="mod-list">
-          <li><i class="fas fa-shield"></i> u/ai_researcher</li>
-          <li><i class="fas fa-shield"></i> u/ml_engineer</li>
-        </ul>
-      </div>
-    </aside>
+    <aside class="sidebar sidebar-right" id="sidebar-right-root"></aside>
   </main>
 
+  <div id="auth-modal-root"></div>
+
+  <!-- Core -->
   <script src="js/data.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/auth.js"></script>
   <script src="js/posts.js"></script>
-  <script src="js/community.js"></script>
+  <!-- Shared components -->
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/sidebar-left.js"></script>
+  <script src="js/components/auth-modal.js"></script>
+  <!-- Page components -->
+  <script src="js/components/community-banner.js"></script>
+  <script src="js/components/community-cards.js"></script>
+  <!-- Init -->
   <script src="js/app.js"></script>
 </body>
 </html>

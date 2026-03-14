@@ -9,80 +9,20 @@
 </head>
 <body>
 
-  <!-- ============ HEADER / NAVBAR ============ -->
-  <header class="navbar">
-    <div class="navbar-left">
-      <a href="index.html" class="logo">
-        <i class="fas fa-hub"></i>
-        <span class="logo-icon">⬡</span>
-        <span class="logo-text">Open<strong>hub</strong></span>
-      </a>
-    </div>
-    <div class="navbar-center">
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" id="search-input" placeholder="Search Openhub" autocomplete="off">
-      </div>
-    </div>
-    <div class="navbar-right">
-      <button class="icon-btn" id="theme-toggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-      <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i></button>
-      <button class="btn btn-outline" id="login-btn">Log In</button>
-      <button class="btn btn-primary" id="signup-btn">Sign Up</button>
-    </div>
-    <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-  </header>
+  <div id="navbar-root"></div>
 
-  <!-- ============ MAIN LAYOUT ============ -->
   <main class="container">
+    <div id="sidebar-left-root"></div>
 
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar sidebar-left" id="sidebar-left">
-      <nav class="sidebar-nav">
-        <h4 class="sidebar-heading">Feeds</h4>
-        <a href="#" class="sidebar-link active"><i class="fas fa-fire"></i> Hot</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-bolt"></i> New</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-chart-line"></i> Top</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-arrow-trend-up"></i> Rising</a>
-      </nav>
-      <nav class="sidebar-nav">
-        <h4 class="sidebar-heading">Communities</h4>
-        <a href="community.html?c=machinelearning" class="sidebar-link"><i class="fas fa-brain"></i> h/MachineLearning</a>
-        <a href="community.html?c=llms" class="sidebar-link"><i class="fas fa-robot"></i> h/LLMs</a>
-        <a href="community.html?c=computervision" class="sidebar-link"><i class="fas fa-eye"></i> h/ComputerVision</a>
-        <a href="community.html?c=nlp" class="sidebar-link"><i class="fas fa-language"></i> h/NLP</a>
-        <a href="community.html?c=ethics" class="sidebar-link"><i class="fas fa-scale-balanced"></i> h/AIethics</a>
-        <a href="community.html?c=opensource" class="sidebar-link"><i class="fas fa-code-branch"></i> h/OpenSource</a>
-        <a href="community.html?c=research" class="sidebar-link"><i class="fas fa-flask"></i> h/AIResearch</a>
-        <a href="community.html?c=beginners" class="sidebar-link"><i class="fas fa-graduation-cap"></i> h/Beginners</a>
-      </nav>
-      <nav class="sidebar-nav">
-        <h4 class="sidebar-heading">Resources</h4>
-        <a href="#" class="sidebar-link"><i class="fas fa-book"></i> Wiki</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-calendar"></i> Events</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-briefcase"></i> Jobs Board</a>
-      </nav>
-    </aside>
-
-    <!-- FEED -->
     <section class="feed" id="feed">
+      <div id="create-post-box-root"></div>
 
-      <!-- Create Post Box -->
-      <div class="create-post-box">
-        <div class="create-post-avatar"><i class="fas fa-user-circle"></i></div>
-        <input type="text" class="create-post-input" id="create-post-trigger" placeholder="Create a post" readonly>
-        <button class="icon-btn"><i class="fas fa-image"></i></button>
-        <button class="icon-btn"><i class="fas fa-link"></i></button>
-      </div>
-
-      <!-- Sort Bar -->
       <div class="sort-bar">
         <button class="sort-btn active" data-sort="hot"><i class="fas fa-fire"></i> Hot</button>
         <button class="sort-btn" data-sort="new"><i class="fas fa-bolt"></i> New</button>
         <button class="sort-btn" data-sort="top"><i class="fas fa-chart-line"></i> Top</button>
       </div>
 
-      <!-- Posts are injected here by JS -->
       <div id="posts-container"></div>
 
       <div class="load-more">
@@ -90,97 +30,24 @@
       </div>
     </section>
 
-    <!-- RIGHT SIDEBAR -->
-    <aside class="sidebar sidebar-right">
-      <div class="card">
-        <div class="card-banner"></div>
-        <h3>Welcome to Openhub</h3>
-        <p>Your home for AI discussion. Join communities, share research, ask questions, and stay on the cutting edge of artificial intelligence.</p>
-        <button class="btn btn-primary btn-block" id="create-post-btn">Create Post</button>
-        <button class="btn btn-outline btn-block" id="create-community-btn">Create Community</button>
-      </div>
-      <div class="card">
-        <h4>Trending Today</h4>
-        <ul class="trending-list" id="trending-list"></ul>
-      </div>
-      <div class="card">
-        <h4>Community Rules</h4>
-        <ol class="rules-list">
-          <li>Be respectful and constructive</li>
-          <li>No spam or self-promotion</li>
-          <li>Cite sources for research claims</li>
-          <li>Use appropriate flair/tags</li>
-          <li>No misinformation</li>
-        </ol>
-      </div>
-      <div class="footer-links">
-        <a href="#">About</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Contact</a>
-        <p>&copy; 2026 Openhub</p>
-      </div>
-    </aside>
+    <aside class="sidebar sidebar-right" id="sidebar-right-root"></aside>
   </main>
 
-  <!-- ============ CREATE POST MODAL ============ -->
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal" id="create-post-modal">
-      <div class="modal-header">
-        <h3>Create a Post</h3>
-        <button class="icon-btn modal-close" id="modal-close"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="modal-body">
-        <select id="post-community" class="input">
-          <option value="">Choose a community</option>
-          <option value="h/MachineLearning">h/MachineLearning</option>
-          <option value="h/LLMs">h/LLMs</option>
-          <option value="h/ComputerVision">h/ComputerVision</option>
-          <option value="h/NLP">h/NLP</option>
-          <option value="h/AIethics">h/AIethics</option>
-          <option value="h/OpenSource">h/OpenSource</option>
-          <option value="h/AIResearch">h/AIResearch</option>
-          <option value="h/Beginners">h/Beginners</option>
-        </select>
-        <div class="post-type-tabs">
-          <button class="tab active" data-type="text"><i class="fas fa-align-left"></i> Text</button>
-          <button class="tab" data-type="link"><i class="fas fa-link"></i> Link</button>
-          <button class="tab" data-type="image"><i class="fas fa-image"></i> Image</button>
-        </div>
-        <input type="text" class="input" id="post-title" placeholder="Title" maxlength="300">
-        <textarea class="input textarea" id="post-body" placeholder="What's on your mind?"></textarea>
-        <input type="text" class="input hidden" id="post-link" placeholder="URL">
-        <input type="text" class="input" id="post-tags" placeholder="Tags (comma separated)">
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" id="modal-cancel">Cancel</button>
-        <button class="btn btn-primary" id="modal-submit">Post</button>
-      </div>
-    </div>
-  </div>
+  <div id="create-post-modal-root"></div>
+  <div id="auth-modal-root"></div>
 
-  <!-- ============ AUTH MODAL ============ -->
-  <div class="modal-overlay" id="auth-overlay">
-    <div class="modal modal-sm" id="auth-modal">
-      <div class="modal-header">
-        <h3 id="auth-title">Log In</h3>
-        <button class="icon-btn modal-close" id="auth-close"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" class="input" id="auth-username" placeholder="Username">
-        <input type="password" class="input" id="auth-password" placeholder="Password">
-        <input type="email" class="input hidden" id="auth-email" placeholder="Email">
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary btn-block" id="auth-submit">Log In</button>
-        <p class="auth-switch">Don't have an account? <a href="#" id="auth-toggle">Sign Up</a></p>
-      </div>
-    </div>
-  </div>
-
+  <!-- Core -->
   <script src="js/data.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/auth.js"></script>
   <script src="js/posts.js"></script>
-  <script src="js/home.js"></script>
+  <!-- Shared components -->
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/sidebar-left.js"></script>
+  <script src="js/components/auth-modal.js"></script>
+  <!-- Page components -->
+  <script src="js/components/home-sidebar.js"></script>
+  <script src="js/components/create-post-modal.js"></script>
+  <!-- Init -->
   <script src="js/app.js"></script>
 </body>
 </html>

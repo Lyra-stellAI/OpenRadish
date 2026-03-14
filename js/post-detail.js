@@ -133,13 +133,10 @@
       });
     });
 
-    // Community sidebar info
+    // Community sidebar
     var communityData = COMMUNITIES[post.communityKey];
-    if (communityData) {
-      var nameEl = $("#post-community-name");
-      var descEl = $("#post-community-desc");
-      if (nameEl) nameEl.textContent = communityData.name;
-      if (descEl) descEl.textContent = communityData.description;
+    if (hub.renderPostSidebar) {
+      hub.renderPostSidebar(communityData);
     }
 
     renderComments();
