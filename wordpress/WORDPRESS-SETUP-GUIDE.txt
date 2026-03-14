@@ -1,0 +1,205 @@
+=====================================================================
+  OPENHUB — WORDPRESS UPLOAD GUIDE (WPCode + WP Coder)
+=====================================================================
+
+This guide explains how to upload all OpenHub files to your WordPress
+site at openradish-ai.com using WPCode and WP Coder plugins.
+
+=====================================================================
+  OVERVIEW — WHAT YOU NEED TO CREATE
+=====================================================================
+
+You will create:
+  1. ONE CSS snippet    (openhub-styles.css)     → WPCode CSS Snippet
+  2. ONE JS snippet     (openhub-scripts.js)     → WPCode JavaScript Snippet
+  3. ONE Font Awesome   (external CDN)           → WPCode HTML Snippet
+  4. THREE WordPress Pages (Home, Community, Post)
+
+All original files have been bundled into single CSS/JS files so you
+only need to create a few WPCode snippets instead of 25+ separate ones.
+
+
+=====================================================================
+  STEP 1: ADD FONT AWESOME (WPCode HTML Snippet)
+=====================================================================
+
+1. Go to: WP Admin → Code Snippets → + Add Snippet
+2. Choose: "Add Your Custom Code (New Snippet)"
+3. Settings:
+   - Title:     "OpenHub — Font Awesome CDN"
+   - Code Type: "HTML Snippet"
+   - Paste this code:
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+4. Insertion:
+   - Location: "Site Wide Header"
+   - Insert Method: Auto Insert
+5. Toggle: Active
+6. Click: Save Snippet
+
+
+=====================================================================
+  STEP 2: ADD CSS (WPCode CSS Snippet)
+=====================================================================
+
+1. Go to: WP Admin → Code Snippets → + Add Snippet
+2. Choose: "Add Your Custom Code (New Snippet)"
+3. Settings:
+   - Title:     "OpenHub — Styles"
+   - Code Type: "CSS Snippet"
+   - Paste the ENTIRE contents of: wordpress/openhub-styles.css
+4. Insertion:
+   - Location: "Site Wide Header"
+   - Insert Method: Auto Insert
+5. Toggle: Active
+6. Click: Save Snippet
+
+
+=====================================================================
+  STEP 3: ADD JAVASCRIPT (WPCode JS Snippet)
+=====================================================================
+
+1. Go to: WP Admin → Code Snippets → + Add Snippet
+2. Choose: "Add Your Custom Code (New Snippet)"
+3. Settings:
+   - Title:     "OpenHub — Scripts"
+   - Code Type: "JavaScript Snippet"
+   - Paste the ENTIRE contents of: wordpress/openhub-scripts.js
+4. Insertion:
+   - Location: "Site Wide Footer"
+   - Insert Method: Auto Insert
+5. Toggle: Active
+6. Click: Save Snippet
+
+
+=====================================================================
+  STEP 4: CREATE WORDPRESS PAGES
+=====================================================================
+
+You need 3 WordPress pages. For each page:
+
+1. Go to: WP Admin → Pages → Add New
+2. Use a BLANK/FULL-WIDTH page template (important — avoid sidebars)
+3. Add a "Custom HTML" block (not paragraph/text)
+4. Paste the HTML from the corresponding file
+
+--- PAGE 1: HOME ---
+  - Page Title: "Openhub"
+  - Slug: openhub (or whatever you prefer)
+  - Paste from: wordpress/page-home.html
+
+--- PAGE 2: COMMUNITY ---
+  - Page Title: "Openhub Community"
+  - Slug: openhub-community
+  - Paste from: wordpress/page-community.html
+
+--- PAGE 3: POST DETAIL ---
+  - Page Title: "Openhub Post"
+  - Slug: openhub-post
+  - Paste from: wordpress/page-post.html
+
+5. Publish all 3 pages
+
+
+=====================================================================
+  STEP 5: UPDATE PAGE LINKS IN JAVASCRIPT
+=====================================================================
+
+After creating the WordPress pages, you need to update the internal
+links in the JavaScript so pages link to each other correctly.
+
+1. Note the page IDs or slugs of your 3 pages:
+   - Home page slug (e.g., "openhub")
+   - Community page slug (e.g., "openhub-community")
+   - Post page slug (e.g., "openhub-post")
+
+2. Go back to your WPCode JavaScript snippet ("OpenHub — Scripts")
+
+3. Find and replace these placeholders:
+
+   FIND:     ?page_id=HOME_PAGE_ID
+   REPLACE:  /openhub/
+   (use your actual home page slug)
+
+   FIND:     ?page_id=COMMUNITY_PAGE_ID
+   REPLACE:  /openhub-community/
+   (use your actual community page slug)
+
+   FIND:     ?page_id=POST_PAGE_ID
+   REPLACE:  /openhub-post/
+   (use your actual post page slug)
+
+   For the community page links, ensure the format becomes:
+     /openhub-community/?c=machinelearning
+
+   For the post page links, ensure the format becomes:
+     /openhub-post/?id=1
+
+4. Save the snippet
+
+
+=====================================================================
+  STEP 6: OPTIONAL — USE FULL-WIDTH TEMPLATE
+=====================================================================
+
+WordPress themes add their own headers, sidebars, and footers.
+For the best experience:
+
+Option A — Use a Full-Width / Blank Page Template:
+  - When editing each page, look for "Page Attributes" → Template
+  - Choose "Full Width", "Blank Canvas", or "Elementor Canvas"
+  - This removes the theme's sidebar and gives OpenHub full width
+
+Option B — Hide WordPress theme elements with CSS:
+  Add this to the CSS snippet if you want to hide the WP header/footer
+  on OpenHub pages:
+
+  /* Hide WP theme chrome on OpenHub pages */
+  .page-template-full-width #site-header,
+  .page-template-full-width #site-footer { display: none; }
+
+
+=====================================================================
+  ALTERNATIVE: SINGLE-PAGE APPROACH (WP CODER)
+=====================================================================
+
+If you prefer using WP Coder instead of WPCode, you can create a
+single shortcode that contains everything:
+
+1. Go to: WP Admin → WP Coder → Add New
+2. In the HTML tab: paste the content from page-home.html
+3. In the CSS tab:  paste the content from openhub-styles.css
+4. In the JS tab:   paste the content from openhub-scripts.js
+5. Save and copy the shortcode (e.g., [wpCoder id="1"])
+6. Paste the shortcode into any WordPress page
+
+Repeat for community and post pages with their respective HTML,
+reusing the same CSS/JS.
+
+
+=====================================================================
+  TROUBLESHOOTING
+=====================================================================
+
+Q: Styles are not applying?
+A: Make sure the CSS snippet is set to "Site Wide Header" and is Active.
+   Also check that your HTML is wrapped in <div class="openhub-app">.
+
+Q: JavaScript not working?
+A: Ensure the JS snippet is set to "Site Wide Footer" and loads AFTER
+   the HTML. Check browser console (F12) for errors.
+
+Q: Layout looks wrong / theme interfering?
+A: Use a Full-Width or Blank page template. Add CSS to hide theme
+   elements if needed (see Step 6).
+
+Q: Links between pages are broken?
+A: Make sure you updated the placeholder page IDs in the JavaScript
+   (see Step 5). Use your actual WordPress page slugs.
+
+Q: Font Awesome icons not showing?
+A: Make sure the Font Awesome CDN snippet is active and set to
+   "Site Wide Header" (see Step 1).
+
+=====================================================================

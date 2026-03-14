@@ -1,0 +1,34 @@
+<!-- OPENHUB POST DETAIL PAGE — Paste into a WordPress Page (use "Custom HTML" block or Text editor) -->
+<!-- Page Title: Openhub Post -->
+<!-- Page Slug: openhub-post -->
+
+<div class="openhub-app">
+  <div id="navbar-root"></div>
+
+  <main class="container container-post">
+    <section class="feed" id="feed">
+      <div class="post-detail" id="post-detail"></div>
+
+      <div class="comments-section" id="comments-section">
+        <h3 id="comment-count">Comments</h3>
+        <div class="comment-form">
+          <textarea class="input textarea" id="comment-input" placeholder="Share your thoughts..."></textarea>
+          <button class="btn btn-primary" id="comment-submit">Comment</button>
+        </div>
+        <div class="comment-sort">
+          <span>Sort by:</span>
+          <select id="comment-sort-select" class="input input-sm">
+            <option value="best">Best</option>
+            <option value="new">New</option>
+            <option value="top">Top</option>
+          </select>
+        </div>
+        <div id="comments-container"></div>
+      </div>
+    </section>
+
+    <aside class="sidebar sidebar-right" id="sidebar-right-root"></aside>
+  </main>
+
+  <div id="auth-modal-root"></div>
+</div>
