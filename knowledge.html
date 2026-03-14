@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Openhub — The AI Community</title>
+  <title>Knowledge Hub — Openhub</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -21,7 +21,7 @@
     <div class="navbar-center">
       <div class="search-bar">
         <i class="fas fa-search"></i>
-        <input type="text" id="search-input" placeholder="Search Openhub" autocomplete="off">
+        <input type="text" id="search-input" placeholder="Search papers & research" autocomplete="off">
       </div>
     </div>
     <div class="navbar-right">
@@ -40,15 +40,15 @@
     <aside class="sidebar sidebar-left" id="sidebar-left">
       <nav class="sidebar-nav">
         <h4 class="sidebar-heading">Feeds</h4>
-        <a href="#" class="sidebar-link active"><i class="fas fa-fire"></i> Hot</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-bolt"></i> New</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-chart-line"></i> Top</a>
-        <a href="#" class="sidebar-link"><i class="fas fa-arrow-trend-up"></i> Rising</a>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-fire"></i> Hot</a>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-bolt"></i> New</a>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-chart-line"></i> Top</a>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-arrow-trend-up"></i> Rising</a>
       </nav>
       <nav class="sidebar-nav">
         <h4 class="sidebar-heading">Sections</h4>
         <a href="news.html" class="sidebar-link"><i class="fas fa-newspaper"></i> News & Interviews</a>
-        <a href="knowledge.html" class="sidebar-link"><i class="fas fa-book-open"></i> Knowledge Hub</a>
+        <a href="knowledge.html" class="sidebar-link active"><i class="fas fa-book-open"></i> Knowledge Hub</a>
       </nav>
       <nav class="sidebar-nav">
         <h4 class="sidebar-heading">Communities</h4>
@@ -69,53 +69,57 @@
       </nav>
     </aside>
 
-    <!-- FEED -->
+    <!-- MAIN CONTENT -->
     <section class="feed" id="feed">
 
-      <!-- Create Post Box -->
-      <div class="create-post-box">
-        <div class="create-post-avatar"><i class="fas fa-user-circle"></i></div>
-        <input type="text" class="create-post-input" id="create-post-trigger" placeholder="Create a post" readonly>
-        <button class="icon-btn"><i class="fas fa-image"></i></button>
-        <button class="icon-btn"><i class="fas fa-link"></i></button>
+      <!-- Section Header -->
+      <div class="section-header">
+        <div class="section-header-icon"><i class="fas fa-book-open"></i></div>
+        <div>
+          <h1 class="section-title">Knowledge Hub</h1>
+          <p class="section-subtitle">Curated research papers from top journals and conferences — NeurIPS, ICML, ICLR, Nature, Science, CVPR</p>
+        </div>
       </div>
 
-      <!-- Sort Bar -->
+      <!-- Filter Tabs -->
       <div class="sort-bar">
-        <button class="sort-btn active" data-sort="hot"><i class="fas fa-fire"></i> Hot</button>
-        <button class="sort-btn" data-sort="new"><i class="fas fa-bolt"></i> New</button>
-        <button class="sort-btn" data-sort="top"><i class="fas fa-chart-line"></i> Top</button>
+        <button class="sort-btn active" data-filter="all"><i class="fas fa-globe"></i> All</button>
+        <button class="sort-btn" data-filter="journal"><i class="fas fa-journal-whills"></i> Journals</button>
+        <button class="sort-btn" data-filter="conference"><i class="fas fa-users"></i> Conferences</button>
       </div>
 
-      <!-- Posts are injected here by JS -->
-      <div id="posts-container"></div>
+      <!-- Papers injected by JS -->
+      <div id="papers-container"></div>
 
-      <div class="load-more">
-        <button class="btn btn-outline" id="load-more-btn">Load More</button>
-      </div>
     </section>
 
     <!-- RIGHT SIDEBAR -->
     <aside class="sidebar sidebar-right">
       <div class="card">
-        <div class="card-banner"></div>
-        <h3>Welcome to Openhub</h3>
-        <p>Your home for AI discussion. Join communities, share research, ask questions, and stay on the cutting edge of artificial intelligence.</p>
-        <button class="btn btn-primary btn-block" id="create-post-btn">Create Post</button>
-        <button class="btn btn-outline btn-block" id="create-community-btn">Create Community</button>
+        <div class="card-banner" style="background: linear-gradient(135deg, #00b894, #0079d3);"></div>
+        <h3>Knowledge Hub</h3>
+        <p>Explore and discuss the latest published research in AI and machine learning from the world's top venues.</p>
+        <button class="btn btn-primary btn-block" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> Back to Feed</button>
       </div>
       <div class="card">
-        <h4>Trending Today</h4>
-        <ul class="trending-list" id="trending-list"></ul>
+        <h4>Top Venues</h4>
+        <ul class="featured-list">
+          <li><i class="fas fa-award"></i> Nature / Nature MI</li>
+          <li><i class="fas fa-award"></i> Science</li>
+          <li><i class="fas fa-award"></i> NeurIPS 2026</li>
+          <li><i class="fas fa-award"></i> ICML 2026</li>
+          <li><i class="fas fa-award"></i> ICLR 2026</li>
+          <li><i class="fas fa-award"></i> CVPR 2026</li>
+        </ul>
       </div>
       <div class="card">
-        <h4>Community Rules</h4>
+        <h4>Discussion Guidelines</h4>
         <ol class="rules-list">
-          <li>Be respectful and constructive</li>
-          <li>No spam or self-promotion</li>
-          <li>Cite sources for research claims</li>
-          <li>Use appropriate flair/tags</li>
-          <li>No misinformation</li>
+          <li>Link to the original paper</li>
+          <li>Provide constructive criticism</li>
+          <li>Summarize key contributions</li>
+          <li>Discuss reproducibility when relevant</li>
+          <li>No plagiarism or misrepresentation</li>
         </ol>
       </div>
       <div class="footer-links">
@@ -124,42 +128,6 @@
       </div>
     </aside>
   </main>
-
-  <!-- ============ CREATE POST MODAL ============ -->
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal" id="create-post-modal">
-      <div class="modal-header">
-        <h3>Create a Post</h3>
-        <button class="icon-btn modal-close" id="modal-close"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="modal-body">
-        <select id="post-community" class="input">
-          <option value="">Choose a community</option>
-          <option value="h/MachineLearning">h/MachineLearning</option>
-          <option value="h/LLMs">h/LLMs</option>
-          <option value="h/ComputerVision">h/ComputerVision</option>
-          <option value="h/NLP">h/NLP</option>
-          <option value="h/AIethics">h/AIethics</option>
-          <option value="h/OpenSource">h/OpenSource</option>
-          <option value="h/AIResearch">h/AIResearch</option>
-          <option value="h/Beginners">h/Beginners</option>
-        </select>
-        <div class="post-type-tabs">
-          <button class="tab active" data-type="text"><i class="fas fa-align-left"></i> Text</button>
-          <button class="tab" data-type="link"><i class="fas fa-link"></i> Link</button>
-          <button class="tab" data-type="image"><i class="fas fa-image"></i> Image</button>
-        </div>
-        <input type="text" class="input" id="post-title" placeholder="Title" maxlength="300">
-        <textarea class="input textarea" id="post-body" placeholder="What's on your mind?"></textarea>
-        <input type="text" class="input hidden" id="post-link" placeholder="URL">
-        <input type="text" class="input" id="post-tags" placeholder="Tags (comma separated)">
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" id="modal-cancel">Cancel</button>
-        <button class="btn btn-primary" id="modal-submit">Post</button>
-      </div>
-    </div>
-  </div>
 
   <!-- ============ AUTH MODAL ============ -->
   <div class="modal-overlay" id="auth-overlay">

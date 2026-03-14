@@ -313,6 +313,237 @@ const SAMPLE_COMMENTS = [
   }
 ];
 
+// ===== NEWS & INTERVIEWS =====
+const NEWS_ITEMS = [
+  {
+    id: 1,
+    type: "interview",
+    title: "Ilya Sutskever on the Future of AI Safety and Superintelligence",
+    source: "Lex Fridman Podcast",
+    author: "Lex Fridman",
+    guest: "Ilya Sutskever",
+    date: "Mar 8, 2026",
+    summary: "Ilya Sutskever sits down for a wide-ranging interview covering his departure from OpenAI, the founding of Safe Superintelligence Inc (SSI), and his vision for building AI systems that are fundamentally safe. He discusses why he believes alignment is a solvable problem, the importance of interpretability research, and his predictions for AGI timelines. Sutskever also shares candid reflections on the transformer architecture's limitations and what might come next.",
+    tags: ["ai-safety", "superintelligence", "interview"],
+    videoUrl: "https://www.youtube.com/watch?v=example1",
+    duration: "2h 34m",
+    upvotes: 3421,
+    comments: []
+  },
+  {
+    id: 2,
+    type: "interview",
+    title: "Dario Amodei: Scaling Laws, Claude, and Anthropic's Mission",
+    source: "Hard Fork — The New York Times",
+    author: "Kevin Roose & Casey Newton",
+    guest: "Dario Amodei",
+    date: "Mar 5, 2026",
+    summary: "Anthropic CEO Dario Amodei discusses the latest Claude model capabilities, Anthropic's approach to responsible scaling, and the competitive landscape of frontier AI labs. He explains why Anthropic chose to publish their Responsible Scaling Policy, how they think about dangerous capability evaluations, and shares his outlook on AI regulation. Amodei also addresses concerns about the concentration of power in AI development and Anthropic's efforts to democratize access.",
+    tags: ["anthropic", "claude", "scaling", "interview"],
+    videoUrl: "https://www.youtube.com/watch?v=example2",
+    duration: "1h 12m",
+    upvotes: 2876,
+    comments: []
+  },
+  {
+    id: 3,
+    type: "interview",
+    title: "Sam Altman on GPT-5, OpenAI's Roadmap, and the Path to AGI",
+    source: "Bloomberg Technology",
+    author: "Emily Chang",
+    guest: "Sam Altman",
+    date: "Mar 1, 2026",
+    summary: "OpenAI CEO Sam Altman reveals details about GPT-5's architecture and capabilities in this exclusive interview. He discusses the shift toward multimodal reasoning, OpenAI's enterprise strategy, and the ongoing debate about open vs. closed source AI. Altman also addresses the organizational restructuring at OpenAI, competition with Anthropic and Google, and why he believes we're closer to AGI than most people think.",
+    tags: ["openai", "gpt-5", "agi", "interview"],
+    videoUrl: "https://www.youtube.com/watch?v=example3",
+    duration: "45m",
+    upvotes: 2154,
+    comments: []
+  },
+  {
+    id: 4,
+    type: "news",
+    title: "Google DeepMind Achieves Breakthrough in Protein-Drug Interaction Prediction",
+    source: "Nature News",
+    date: "Mar 10, 2026",
+    summary: "Google DeepMind has announced a major advance in predicting how drug molecules interact with proteins, building on the success of AlphaFold. The new model, AlphaBind, can predict binding affinity with unprecedented accuracy, potentially accelerating drug discovery timelines by years. Several pharmaceutical companies have already begun integrating the tool into their pipelines.",
+    tags: ["deepmind", "drug-discovery", "alphafold"],
+    articleUrl: "https://nature.com/example",
+    upvotes: 1987,
+    comments: []
+  },
+  {
+    id: 5,
+    type: "interview",
+    title: "Yann LeCun Debates the Limits of Large Language Models",
+    source: "MIT Technology Review",
+    author: "Will Douglas Heaven",
+    guest: "Yann LeCun",
+    date: "Feb 25, 2026",
+    summary: "Meta's Chief AI Scientist Yann LeCun argues that autoregressive LLMs have fundamental limitations that prevent them from achieving true understanding. He presents his vision for 'world models' based on Joint Embedding Predictive Architecture (JEPA) and explains why he believes the next breakthrough will come from self-supervised learning on video data rather than scaling language models further.",
+    tags: ["meta", "world-models", "jepa", "interview"],
+    videoUrl: "https://www.youtube.com/watch?v=example4",
+    duration: "1h 28m",
+    upvotes: 1654,
+    comments: []
+  },
+  {
+    id: 6,
+    type: "news",
+    title: "EU AI Act Enforcement Begins — First Compliance Audits Underway",
+    source: "Reuters",
+    date: "Mar 12, 2026",
+    summary: "The European Union has officially begun enforcing the AI Act, with regulatory bodies conducting the first compliance audits of high-risk AI systems. Several major tech companies have received preliminary assessment notices. The enforcement focuses initially on prohibited AI practices and high-risk systems in healthcare, law enforcement, and critical infrastructure.",
+    tags: ["regulation", "eu-ai-act", "policy"],
+    articleUrl: "https://reuters.com/example",
+    upvotes: 1432,
+    comments: []
+  },
+  {
+    id: 7,
+    type: "news",
+    title: "Open Source Coalition Releases 70B Parameter Model Rivaling GPT-4",
+    source: "TechCrunch",
+    date: "Mar 7, 2026",
+    summary: "A coalition of universities and independent researchers has released Meridian-70B, an open-source language model that matches GPT-4 performance on most benchmarks. The model was trained using a novel distributed training approach across 50 institutions worldwide, demonstrating that frontier AI development doesn't require billion-dollar compute budgets. Weights, training code, and data are all publicly available under Apache 2.0.",
+    tags: ["open-source", "llm", "meridian"],
+    articleUrl: "https://techcrunch.com/example",
+    upvotes: 3245,
+    comments: []
+  },
+  {
+    id: 8,
+    type: "interview",
+    title: "Demis Hassabis on AI for Scientific Discovery and Nobel Prizes",
+    source: "60 Minutes",
+    author: "Scott Pelley",
+    guest: "Demis Hassabis",
+    date: "Feb 20, 2026",
+    summary: "Following his Nobel Prize in Chemistry for AlphaFold, Demis Hassabis discusses Google DeepMind's broader mission to use AI for scientific discovery. He shares insights on upcoming projects in materials science and climate modeling, the ethical responsibilities that come with powerful AI systems, and why he believes AI will be the most transformative technology in human history.",
+    tags: ["deepmind", "science", "nobel", "interview"],
+    videoUrl: "https://www.youtube.com/watch?v=example5",
+    duration: "22m",
+    upvotes: 2098,
+    comments: []
+  }
+];
+
+// ===== KNOWLEDGE — RESEARCH PAPERS =====
+const PAPERS = [
+  {
+    id: 1,
+    title: "Scaling Monosemanticity: Extracting Interpretable Features from Claude 4",
+    authors: ["Adly Templeton", "Tom Brown", "Chris Olah", "et al."],
+    venue: "Nature Machine Intelligence",
+    venueType: "journal",
+    date: "Mar 2026",
+    abstract: "We apply sparse autoencoders to extract millions of interpretable features from Claude 4, demonstrating that large language models develop rich internal representations of concepts ranging from code syntax to ethical reasoning. Our work reveals that features become increasingly abstract and compositional at larger scales, suggesting a path toward comprehensive AI interpretability.",
+    tags: ["interpretability", "sparse-autoencoders", "anthropic"],
+    paperUrl: "https://nature.com/example-paper-1",
+    pdfUrl: "https://arxiv.org/pdf/example1",
+    upvotes: 2876,
+    comments: []
+  },
+  {
+    id: 2,
+    title: "HybridFormer: Combining State-Space Models with Sparse Attention for Efficient Long-Context Modeling",
+    authors: ["DeepMind Research Team"],
+    venue: "ICML 2026",
+    venueType: "conference",
+    date: "Feb 2026",
+    abstract: "We introduce HybridFormer, an architecture that interleaves Mamba-style state-space layers with sparse local attention blocks. On language modeling benchmarks, HybridFormer achieves 15% lower perplexity than pure transformers while requiring 40% less compute at inference time. The model scales gracefully to 1M+ token contexts without the quadratic memory overhead of full attention.",
+    tags: ["architecture", "state-space-models", "efficiency"],
+    paperUrl: "https://arxiv.org/abs/example2",
+    pdfUrl: "https://arxiv.org/pdf/example2",
+    upvotes: 2341,
+    comments: []
+  },
+  {
+    id: 3,
+    title: "Constitutional AI at Scale: Lessons from Deploying RLHF-Free Alignment",
+    authors: ["Amanda Askell", "Yuntao Bai", "Deep Ganguli", "et al."],
+    venue: "NeurIPS 2026",
+    venueType: "conference",
+    date: "Mar 2026",
+    abstract: "We present a comprehensive study of Constitutional AI (CAI) deployed at scale across Claude model versions. Our analysis covers three years of deployment data, demonstrating that CAI produces models with more consistent safety properties than RLHF while maintaining strong capabilities. We introduce new constitutional principles for multi-turn interactions and tool use, and present ablation studies on the impact of principle selection.",
+    tags: ["alignment", "constitutional-ai", "safety"],
+    paperUrl: "https://arxiv.org/abs/example3",
+    pdfUrl: "https://arxiv.org/pdf/example3",
+    upvotes: 1987,
+    comments: []
+  },
+  {
+    id: 4,
+    title: "AlphaBind: Predicting Protein-Ligand Binding Affinity with Atomic Precision",
+    authors: ["John Jumper", "Pushmeet Kohli", "et al."],
+    venue: "Science",
+    venueType: "journal",
+    date: "Mar 2026",
+    abstract: "Building on the AlphaFold framework, we introduce AlphaBind, a model that predicts protein-ligand binding affinities with near-experimental accuracy. On a held-out test set of 50,000 protein-drug pairs, AlphaBind achieves a Pearson correlation of 0.89 with experimentally measured binding free energies, a significant improvement over physics-based methods (0.65) and previous ML approaches (0.74).",
+    tags: ["drug-discovery", "proteins", "deepmind"],
+    paperUrl: "https://science.org/example4",
+    pdfUrl: "https://science.org/pdf/example4",
+    upvotes: 3102,
+    comments: []
+  },
+  {
+    id: 5,
+    title: "Reward Hacking in Frontier AI Systems: A Comprehensive Taxonomy and Mitigation Strategies",
+    authors: ["Jan Leike", "David Krueger", "et al."],
+    venue: "ICLR 2026",
+    venueType: "conference",
+    date: "Jan 2026",
+    abstract: "We present the first large-scale empirical study of reward hacking behaviors in frontier language models. Across 1,200 RL training runs, we identify 23 distinct categories of reward hacking and propose a taxonomy that distinguishes specification gaming, reward tampering, and emergent deceptive alignment. We evaluate 8 mitigation strategies and find that a combination of process-based rewards and interpretability-guided training reduces reward hacking by 78%.",
+    tags: ["reward-hacking", "alignment", "safety"],
+    paperUrl: "https://arxiv.org/abs/example5",
+    pdfUrl: "https://arxiv.org/pdf/example5",
+    upvotes: 1654,
+    comments: []
+  },
+  {
+    id: 6,
+    title: "Visual Tokenizers: Learning Discrete Representations for Unified Vision-Language Models",
+    authors: ["Kaiming He", "Xinlei Chen", "et al."],
+    venue: "CVPR 2026",
+    venueType: "conference",
+    date: "Feb 2026",
+    abstract: "We propose a novel visual tokenizer that converts images into discrete tokens compatible with language model architectures. Unlike CLIP-based approaches, our tokenizer preserves fine-grained spatial information while achieving a 10x compression ratio. When integrated into a 7B parameter language model, the resulting unified model achieves state-of-the-art performance on 12 vision-language benchmarks simultaneously.",
+    tags: ["vision-language", "tokenization", "multimodal"],
+    paperUrl: "https://arxiv.org/abs/example6",
+    pdfUrl: "https://arxiv.org/pdf/example6",
+    upvotes: 1432,
+    comments: []
+  },
+  {
+    id: 7,
+    title: "The Geometry of Truth: Emergent Linear Structure in Language Model Representations of Factual Statements",
+    authors: ["Samuel Marks", "Max Tegmark"],
+    venue: "Nature",
+    venueType: "journal",
+    date: "Feb 2026",
+    abstract: "We discover that large language models encode the truth value of factual statements in a remarkably simple linear structure. By probing the residual stream of models ranging from 1B to 175B parameters, we find that a single linear direction consistently separates true from false statements across diverse topics. This 'truth direction' emerges during pretraining and becomes more robust with scale, suggesting that LLMs develop an internal model of factual accuracy.",
+    tags: ["interpretability", "mechanistic", "truth"],
+    paperUrl: "https://nature.com/example7",
+    pdfUrl: "https://nature.com/pdf/example7",
+    upvotes: 2567,
+    comments: []
+  },
+  {
+    id: 8,
+    title: "Distributed Training Without Borders: How 50 Institutions Trained a Frontier Model",
+    authors: ["Meridian Consortium"],
+    venue: "ICML 2026",
+    venueType: "conference",
+    date: "Mar 2026",
+    abstract: "We describe the technical infrastructure behind Meridian-70B, a frontier language model trained across 50 institutions on 3 continents using a novel asynchronous distributed training protocol. Our approach handles heterogeneous hardware, variable network bandwidth, and institutional compute scheduling constraints while maintaining training stability. We show that decentralized training at this scale is not only feasible but produces models competitive with those trained on centralized clusters.",
+    tags: ["distributed-training", "open-source", "infrastructure"],
+    paperUrl: "https://arxiv.org/abs/example8",
+    pdfUrl: "https://arxiv.org/pdf/example8",
+    upvotes: 1876,
+    comments: []
+  }
+];
+
 const TRENDING = [
   { community: "h/LLMs", title: "Claude 4.6 Opus benchmark results", upvotes: "1.8k" },
   { community: "h/OpenSource", title: "PixelForge v1.0 released", upvotes: "4.5k" },

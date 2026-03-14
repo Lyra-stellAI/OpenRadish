@@ -531,6 +531,328 @@
     renderPosts(container, communityPosts);
   }
 
+  // ===== NEWS PAGE =====
+  function initNewsPage() {
+    const container = $("#news-container");
+    if (!container) return;
+
+    renderNewsItems(container, NEWS_ITEMS);
+    initNewsFilters(container);
+    initNewsSearch(container);
+  }
+
+  function renderNewsItems(container, items) {
+    container.innerHTML = items.map(renderNewsCard).join("");
+    attachNewsDiscussion(container);
+    attachNewsVotes(container);
+  }
+
+  function renderNewsCard(item) {
+    const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
+    const isInterview = item.type === "interview";
+    const typeBadge = isInterview
+      ? '<span class="news-type-badge interview"><i class="fas fa-video"></i> Interview</span>'
+      : '<span class="news-type-badge news"><i class="fas fa-newspaper"></i> News</span>';
+
+    const mediaLink = isInterview
+      ? `<a href="${escapeHtml(item.videoUrl)}" target="_blank" rel="noopener" class="video-link"><i class="fab fa-youtube"></i> Watch Video</a>`
+      : `<a href="${escapeHtml(item.articleUrl)}" target="_blank" rel="noopener" class="article-link"><i class="fas fa-external-link-alt"></i> Read Article</a>`;
+
+    const durationInfo = item.duration
+      ? `<span class="duration-badge"><i class="fas fa-clock"></i> ${item.duration}</span>`
+      : "";
+
+    const metaParts = [];
+    if (item.source) metaParts.push(`<strong>${escapeHtml(item.source)}</strong>`);
+    if (item.guest) metaParts.push(`Guest: ${escapeHtml(item.guest)}`);
+    if (item.author) metaParts.push(`by ${escapeHtml(item.author)}`);
+    if (item.date) metaParts.push(item.date);
+
+    const comments = (item.comments || []).map((c) => `
+      <div class="discussion-comment">
+        <span class="discussion-comment-author">u/${escapeHtml(c.author)}</span>
+        <span class="discussion-comment-time">${c.time}</span>
+        <div class="discussion-comment-body">${escapeHtml(c.body)}</div>
+        <div class="discussion-comment-actions">
+          <button><i class="fas fa-arrow-up"></i> ${c.upvotes || 0}</button>
+          <button><i class="fas fa-reply"></i> Reply</button>
+        </div>
+      </div>
+    `).join("");
+
+    return `
+      <div class="news-card" data-type="${item.type}" data-id="${item.id}">
+        <div class="news-card-header">
+          ${typeBadge}
+          <div class="news-card-meta">${metaParts.join(" <span>&bull;</span> ")}</div>
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">${escapeHtml(item.title)}</h3>
+          <p class="news-card-summary">${escapeHtml(item.summary)}</p>
+          ${tags ? `<div class="news-card-tags">${tags}</div>` : ""}
+        </div>
+        <div class="news-card-actions">
+          ${mediaLink}
+          <button class="action-btn news-vote-btn" data-id="${item.id}"><i class="fas fa-arrow-up"></i> ${formatNumber(item.upvotes)}</button>
+          <button class="action-btn"><i class="fas fa-share"></i> Share</button>
+          <button class="action-btn"><i class="fas fa-bookmark"></i> Save</button>
+          ${durationInfo}
+        </div>
+        <div class="discussion-box">
+          <div class="discussion-header"><i class="fas fa-comments"></i> Community Discussion</div>
+          <div class="discussion-input-row">
+            <textarea placeholder="Share your thoughts on this..." rows="1" data-news-id="${item.id}"></textarea>
+            <button class="discussion-submit" data-news-id="${item.id}">Comment</button>
+          </div>
+          <div class="discussion-comments" id="news-comments-${item.id}">${comments}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function attachNewsVotes(container) {
+    container.querySelectorAll(".news-vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (btn.classList.contains("upvoted")) {
+          btn.classList.remove("upvoted");
+          btn.style.color = "";
+        } else {
+          btn.classList.add("upvoted");
+          btn.style.color = "var(--upvote)";
+        }
+      });
+    });
+  }
+
+  function attachNewsDiscussion(container) {
+    container.querySelectorAll(".discussion-submit").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const newsId = parseInt(btn.dataset.newsId);
+        const textarea = container.querySelector(`textarea[data-news-id="${newsId}"]`);
+        const body = textarea.value.trim();
+        if (!body) return;
+
+        const item = NEWS_ITEMS.find((n) => n.id === newsId);
+        if (!item) return;
+
+        const newComment = {
+          author: currentUser || "anonymous",
+          body,
+          upvotes: 1,
+          time: "just now"
+        };
+        item.comments.push(newComment);
+
+        const commentsEl = container.querySelector(`#news-comments-${newsId}`);
+        commentsEl.innerHTML += `
+          <div class="discussion-comment">
+            <span class="discussion-comment-author">u/${escapeHtml(newComment.author)}</span>
+            <span class="discussion-comment-time">${newComment.time}</span>
+            <div class="discussion-comment-body">${escapeHtml(newComment.body)}</div>
+            <div class="discussion-comment-actions">
+              <button><i class="fas fa-arrow-up"></i> 1</button>
+              <button><i class="fas fa-reply"></i> Reply</button>
+            </div>
+          </div>
+        `;
+        textarea.value = "";
+      });
+    });
+  }
+
+  function initNewsFilters(container) {
+    $$(".sort-btn[data-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        $$(".sort-btn[data-filter]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+        const filtered = filter === "all" ? NEWS_ITEMS : NEWS_ITEMS.filter((n) => n.type === filter);
+        renderNewsItems(container, filtered);
+      });
+    });
+  }
+
+  function initNewsSearch(container) {
+    const input = $("#search-input");
+    if (!input) return;
+    let debounce;
+    input.addEventListener("input", () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        const q = input.value.toLowerCase().trim();
+        if (!q) {
+          renderNewsItems(container, NEWS_ITEMS);
+          return;
+        }
+        const filtered = NEWS_ITEMS.filter((n) =>
+          n.title.toLowerCase().includes(q) ||
+          n.summary.toLowerCase().includes(q) ||
+          (n.guest && n.guest.toLowerCase().includes(q)) ||
+          (n.source && n.source.toLowerCase().includes(q)) ||
+          (n.tags && n.tags.some((t) => t.toLowerCase().includes(q)))
+        );
+        renderNewsItems(container, filtered);
+      }, 300);
+    });
+  }
+
+  // ===== KNOWLEDGE PAGE =====
+  function initKnowledgePage() {
+    const container = $("#papers-container");
+    if (!container) return;
+
+    renderPapers(container, PAPERS);
+    initPaperFilters(container);
+    initPaperSearch(container);
+  }
+
+  function renderPaperItems(container, items) {
+    container.innerHTML = items.map(renderPaperCard).join("");
+    attachPaperDiscussion(container);
+    attachPaperVotes(container);
+  }
+
+  function renderPapers(container, items) {
+    renderPaperItems(container, items);
+  }
+
+  function renderPaperCard(paper) {
+    const tags = (paper.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
+    const venueBadge = paper.venueType === "journal"
+      ? `<span class="venue-badge journal"><i class="fas fa-book"></i> ${escapeHtml(paper.venue)}</span>`
+      : `<span class="venue-badge conference"><i class="fas fa-users"></i> ${escapeHtml(paper.venue)}</span>`;
+
+    const authors = paper.authors.map((a) => escapeHtml(a)).join(", ");
+
+    const comments = (paper.comments || []).map((c) => `
+      <div class="discussion-comment">
+        <span class="discussion-comment-author">u/${escapeHtml(c.author)}</span>
+        <span class="discussion-comment-time">${c.time}</span>
+        <div class="discussion-comment-body">${escapeHtml(c.body)}</div>
+        <div class="discussion-comment-actions">
+          <button><i class="fas fa-arrow-up"></i> ${c.upvotes || 0}</button>
+          <button><i class="fas fa-reply"></i> Reply</button>
+        </div>
+      </div>
+    `).join("");
+
+    return `
+      <div class="paper-card" data-venue-type="${paper.venueType}" data-id="${paper.id}">
+        <div class="paper-card-header">
+          ${venueBadge}
+          <div class="paper-card-meta">${paper.date}</div>
+        </div>
+        <div class="paper-card-body">
+          <h3 class="paper-card-title">${escapeHtml(paper.title)}</h3>
+          <div class="paper-card-authors">${authors}</div>
+          <p class="paper-card-abstract">${escapeHtml(paper.abstract)}</p>
+          ${tags ? `<div class="paper-card-tags">${tags}</div>` : ""}
+        </div>
+        <div class="paper-card-actions">
+          <a href="${escapeHtml(paper.paperUrl)}" target="_blank" rel="noopener" class="paper-link primary"><i class="fas fa-file-alt"></i> Read Paper</a>
+          <a href="${escapeHtml(paper.pdfUrl)}" target="_blank" rel="noopener" class="paper-link secondary"><i class="fas fa-file-pdf"></i> PDF</a>
+          <button class="action-btn paper-vote-btn" data-id="${paper.id}"><i class="fas fa-arrow-up"></i> ${formatNumber(paper.upvotes)}</button>
+          <button class="action-btn"><i class="fas fa-share"></i> Share</button>
+          <button class="action-btn"><i class="fas fa-bookmark"></i> Save</button>
+        </div>
+        <div class="discussion-box">
+          <div class="discussion-header"><i class="fas fa-comments"></i> Community Discussion</div>
+          <div class="discussion-input-row">
+            <textarea placeholder="Discuss this paper..." rows="1" data-paper-id="${paper.id}"></textarea>
+            <button class="discussion-submit-paper" data-paper-id="${paper.id}">Comment</button>
+          </div>
+          <div class="discussion-comments" id="paper-comments-${paper.id}">${comments}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function attachPaperVotes(container) {
+    container.querySelectorAll(".paper-vote-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (btn.classList.contains("upvoted")) {
+          btn.classList.remove("upvoted");
+          btn.style.color = "";
+        } else {
+          btn.classList.add("upvoted");
+          btn.style.color = "var(--upvote)";
+        }
+      });
+    });
+  }
+
+  function attachPaperDiscussion(container) {
+    container.querySelectorAll(".discussion-submit-paper").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const paperId = parseInt(btn.dataset.paperId);
+        const textarea = container.querySelector(`textarea[data-paper-id="${paperId}"]`);
+        const body = textarea.value.trim();
+        if (!body) return;
+
+        const paper = PAPERS.find((p) => p.id === paperId);
+        if (!paper) return;
+
+        const newComment = {
+          author: currentUser || "anonymous",
+          body,
+          upvotes: 1,
+          time: "just now"
+        };
+        paper.comments.push(newComment);
+
+        const commentsEl = container.querySelector(`#paper-comments-${paperId}`);
+        commentsEl.innerHTML += `
+          <div class="discussion-comment">
+            <span class="discussion-comment-author">u/${escapeHtml(newComment.author)}</span>
+            <span class="discussion-comment-time">${newComment.time}</span>
+            <div class="discussion-comment-body">${escapeHtml(newComment.body)}</div>
+            <div class="discussion-comment-actions">
+              <button><i class="fas fa-arrow-up"></i> 1</button>
+              <button><i class="fas fa-reply"></i> Reply</button>
+            </div>
+          </div>
+        `;
+        textarea.value = "";
+      });
+    });
+  }
+
+  function initPaperFilters(container) {
+    $$(".sort-btn[data-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        $$(".sort-btn[data-filter]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+        const filtered = filter === "all" ? PAPERS : PAPERS.filter((p) => p.venueType === filter);
+        renderPaperItems(container, filtered);
+      });
+    });
+  }
+
+  function initPaperSearch(container) {
+    const input = $("#search-input");
+    if (!input) return;
+    let debounce;
+    input.addEventListener("input", () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        const q = input.value.toLowerCase().trim();
+        if (!q) {
+          renderPaperItems(container, PAPERS);
+          return;
+        }
+        const filtered = PAPERS.filter((p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.abstract.toLowerCase().includes(q) ||
+          p.venue.toLowerCase().includes(q) ||
+          p.authors.some((a) => a.toLowerCase().includes(q)) ||
+          (p.tags && p.tags.some((t) => t.toLowerCase().includes(q)))
+        );
+        renderPaperItems(container, filtered);
+      }, 300);
+    });
+  }
+
   // ===== HELPERS =====
   function formatNumber(n) {
     if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "k";
@@ -558,6 +880,10 @@
       initPostDetail();
     } else if (path.includes("community.html")) {
       initCommunityPage();
+    } else if (path.includes("news.html")) {
+      initNewsPage();
+    } else if (path.includes("knowledge.html")) {
+      initKnowledgePage();
     } else {
       // Home page
       const container = $("#posts-container");
