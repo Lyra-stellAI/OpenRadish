@@ -1,0 +1,20 @@
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .container { grid-template-columns: 1fr 280px; }
+  .sidebar-left { display: none; }
+  .sidebar-left.open { display: block; position: fixed; top: var(--navbar-height); left: 0; width: var(--sidebar-width); background: var(--bg-secondary); z-index: 90; height: calc(100vh - var(--navbar-height)); padding: 16px; border-right: 1px solid var(--border-light); box-shadow: 4px 0 10px rgba(0,0,0,0.1); }
+}
+
+@media (max-width: 768px) {
+  .container { grid-template-columns: 1fr; }
+  .container-post { grid-template-columns: 1fr; }
+  .sidebar-right { display: none; }
+  .navbar-right { display: none; }
+  .mobile-menu-btn { display: block; margin-left: auto; }
+  .navbar-center { display: none; }
+}
+
+@media (max-width: 480px) {
+  .post-card { border-radius: 0; margin-left: -16px; margin-right: -16px; }
+  .post-title { font-size: 1rem; }
+}

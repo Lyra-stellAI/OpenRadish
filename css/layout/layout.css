@@ -1,0 +1,13 @@
+/* ===== LAYOUT ===== */
+.container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr 310px;
+  gap: 20px;
+  max-width: 1280px;
+  margin: calc(var(--navbar-height) + 16px) auto 32px;
+  padding: 0 16px;
+}
+
+.container-post {
+  grid-template-columns: 1fr 310px;
+}

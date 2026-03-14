@@ -1,0 +1,53 @@
+/* ===== COMMENTS ===== */
+.comments-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+}
+.comments-section h3 { margin-bottom: 12px; }
+
+.comment-form { margin-bottom: 16px; }
+.comment-form textarea { width: 100%; min-height: 80px; margin-bottom: 8px; }
+.comment-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.comment {
+  border-left: 2px solid var(--border-light);
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-left: 0;
+}
+.comment.nested { margin-left: 20px; }
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+.comment-author { font-weight: 600; color: var(--text-primary); }
+.comment-time { color: var(--text-muted); }
+.comment-body { font-size: 0.93rem; margin-bottom: 6px; color: var(--text-primary); }
+.comment-actions {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+.comment-actions button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.comment-actions button:hover { color: var(--accent); }

@@ -1,0 +1,37 @@
+/* ===== CSS VARIABLES / THEME ===== */
+:root {
+  --bg-primary: #f6f7f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f2f5;
+  --text-primary: #1a1a1b;
+  --text-secondary: #576f76;
+  --text-muted: #878a8c;
+  --border-color: #ccc;
+  --border-light: #edeff1;
+  --accent: #0079d3;
+  --accent-hover: #005fa3;
+  --accent-light: #e8f4fd;
+  --upvote: #ff4500;
+  --downvote: #7193ff;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --radius: 8px;
+  --radius-sm: 4px;
+  --navbar-height: 56px;
+  --sidebar-width: 240px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1b;
+  --bg-secondary: #272729;
+  --bg-tertiary: #333;
+  --text-primary: #d7dadc;
+  --text-secondary: #818384;
+  --text-muted: #6a6d6f;
+  --border-color: #474748;
+  --border-light: #343536;
+  --accent: #4fbcff;
+  --accent-hover: #3aa8f0;
+  --accent-light: #1a3a4f;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
